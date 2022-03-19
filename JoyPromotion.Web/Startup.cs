@@ -40,6 +40,8 @@ namespace JoyPromotion.Web
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapAreaControllerRoute(name: "areas", areaName: "admin", pattern: "{area}/{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapDefaultControllerRoute();
             });
         }
