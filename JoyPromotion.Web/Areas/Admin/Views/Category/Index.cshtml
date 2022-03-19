@@ -9,13 +9,13 @@
         </tr>
     </thead>
     <tbody>
-        @for (var i = 0; i < Model.Categories.Count; i++)
+        @for (var i = 0; i < Model.CategoryListDtos.Count; i++)
         {
             <tr>
-                <td>@i</td>
-                <td>@Model.Categories[i].Name</td>
+                <td>@i+1</td>
+                <td>@Model.CategoryListDtos[i].Name</td>
                 <td>
-                    <a asp-controller="Category" asp-action="Edit" asp-route-id="@Model.Categories[i].Id" class="btn btn-outline-warning btn-sm">Edit</a>
+                    <a asp-controller="Category" asp-action="Edit" asp-route-id="@Model.CategoryListDtos[i].Id" class="btn btn-outline-warning btn-sm">Edit</a>
                 </td>
             </tr>
         }

@@ -37,7 +37,7 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 _categoryService.Add(categoryAddDto);
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View(new CategoryAddViewModel { CategoryAddDto = categoryAddDto });
         }
@@ -55,7 +55,7 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 _categoryService.Update(categoryUpdateDto);
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View(new CategoryUpdateViewModel { CategoryUpdateDto = categoryUpdateDto });
         }

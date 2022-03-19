@@ -1,0 +1,21 @@
+﻿@model SocialMediaUpdateViewModel
+
+<form asp-action="Edit" method="post">
+    <input asp-for="SocialMediaUpdateDto.Id" type="hidden" />
+
+    <div class="form-group">
+        <label asp-for="SocialMediaUpdateDto.Name"></label>
+        <input asp-for="SocialMediaUpdateDto.Name" class="form-control" />
+        <span asp-validation-for="SocialMediaUpdateDto.Name"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SocialMediaUpdateDto.Icon"></label>
+        <input asp-for="SocialMediaUpdateDto.Icon" class="form-control" />
+        <span asp-validation-for="SocialMediaUpdateDto.Icon"></span>
+    </div>
+
+    <div class="form-group">
+        <btn-button btn-type="submit" btn-class="btn-success" btn-value="Edit Social Media"></btn-button>
+    </div>
+</form>

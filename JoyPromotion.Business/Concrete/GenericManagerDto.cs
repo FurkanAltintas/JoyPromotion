@@ -29,7 +29,6 @@ namespace JoyPromotion.Business.Concrete
             var entityDeleted = _mapper.Map<TEntity>(entity);
             _genericRepository.Delete(entityDeleted);
             return entity;
-
         }
 
         public List<TEntityDto> GetAll()

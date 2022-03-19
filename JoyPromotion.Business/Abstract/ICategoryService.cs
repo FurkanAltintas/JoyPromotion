@@ -11,7 +11,6 @@ namespace JoyPromotion.Business.Abstract
         CategoryAddDto Add(CategoryAddDto categoryAddDto);
         CategoryUpdateDto Update(CategoryUpdateDto categoryUpdateDto);
         void Delete(Category category);
-
         TDto Convert<TDto>(CategoryDto categoryDto);
     }
 }
