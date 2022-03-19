@@ -5,11 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Concrete\" />
-    <Folder Include="Abstract\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\JoyPromotion.Entities\JoyPromotion.Entities.csproj" />
     <ProjectReference Include="..\JoyPromotion.Shared\JoyPromotion.Shared.csproj" />
   </ItemGroup>
 
