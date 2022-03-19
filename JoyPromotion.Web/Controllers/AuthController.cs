@@ -1,5 +1,5 @@
 ﻿using JoyPromotion.Business.Abstract;
-using JoyPromotion.Web.Areas.Admin.Models;
+using JoyPromotion.Web.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;

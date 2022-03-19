@@ -1,29 +1,36 @@
 ﻿@model UserViewModel
 
 <form asp-controller="Profile" asp-action="Update" method="post" enctype="multipart/form-data">
+    <input asp-for="Users.Id" type="hidden" />
+    
     <div class="form-group">
         <label asp-for="Users.FirstName"></label>
         <input asp-for="Users.FirstName" class="form-control" />
+        <span asp-validation-for="Users.FirstName"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Users.SurName"></label>
         <input asp-for="Users.SurName" class="form-control" />
+        <span asp-validation-for="Users.SurName"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Users.PhoneNumber"></label>
         <input asp-for="Users.PhoneNumber" class="form-control">
+        <span asp-validation-for="Users.PhoneNumber"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Users.Address"></label>
         <textarea asp-for="Users.Address" rows="5"></textarea>
+        <span asp-validation-for="Users.Address"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Users.ImageUrl"></label>
         <img src="~/joy/img/taylor-joy.jpg" alt="@Model.Users.UserName" />
+        <span asp-validation-for="Users.ImageUrl"></span>
     </div>
 
     <div class="form-group">

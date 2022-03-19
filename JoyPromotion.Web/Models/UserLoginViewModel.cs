@@ -1,4 +1,4 @@
-﻿namespace JoyPromotion.Web.Areas.Admin.Models
+﻿namespace JoyPromotion.Web.Models
 {
     public class UserLoginViewModel
     {

@@ -1,5 +1,4 @@
 ﻿using JoyPromotion.Business.Abstract;
-using JoyPromotion.Entities.Concrete;
 using JoyPromotion.Web.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -51,6 +50,11 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
                 return RedirectToAction("Update");
             }
             return View(model);
+        }
+
+        public IActionResult ChangePassword()
+        {
+            return View();
         }
     }
 }
