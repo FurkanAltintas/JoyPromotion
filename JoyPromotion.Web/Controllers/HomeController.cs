@@ -1,5 +1,5 @@
 ﻿using JoyPromotion.Business.Abstract;
-using JoyPromotion.Web.Models;
+using JoyPromotion.Web.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JoyPromotion.Web.Controllers

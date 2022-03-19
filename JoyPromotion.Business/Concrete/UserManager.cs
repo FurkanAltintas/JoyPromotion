@@ -17,7 +17,12 @@ namespace JoyPromotion.Business.Concrete
 
         public bool CheckUser(string userName, string password)
         {
-            _userRepository.CheckUser(userName, password);
+            return _userRepository.CheckUser(userName, password);
+        }
+
+        public User FindByName(string userName)
+        {
+            return _userRepository.FindByName(userName);
         }
     }
 }

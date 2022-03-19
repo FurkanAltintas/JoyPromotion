@@ -17,13 +17,21 @@ namespace JoyPromotion.DataAccess.Concrete.Dapper
 
         public bool CheckUser(string userName, string password)
         {
-            var user = _dbConnection.Query("select * from Users UserName=@userName and Password=@password", new
+            var user = _dbConnection.Query("select * from Users where UserName=@userName and Password=@password", new
             {
                 userName = userName,
                 password = password
             }).FirstOrDefault();
 
-            return user != null ? true : false;
+            return user != null;
+        }
+
+        public User FindByName(string userName)
+        {
+            return _dbConnection.QueryFirstOrDefault<User>("select * from Users where UserName=@userName", new
+            {
+                userName = userName
+            });
         }
     }
 }
