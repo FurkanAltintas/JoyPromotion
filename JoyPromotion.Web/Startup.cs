@@ -32,6 +32,7 @@ namespace JoyPromotion.Web
                 options.Cookie.SameSite = SameSiteMode.Strict; // Diðer web sitelerin cookie kullanýmýný kapadýk
                 options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest; // Bu cookie hem https de hem de http de çalýþacak
                 options.ExpireTimeSpan = TimeSpan.FromDays(20); // Kullanýcýnýn ilgili bilgileri 20 gün boyunca hayatta kalýcak
+                options.LoginPath = new PathString("/Auth/Login");
             });
             services.AddCustomDependencies(Configuration);
             services.AddControllersWithViews().AddFluentValidation();
@@ -54,7 +55,7 @@ namespace JoyPromotion.Web
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapAreaControllerRoute(name: "areas", areaName: "admin", pattern: "{area}/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(name: "admin", pattern: "{area}/{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapDefaultControllerRoute();
             });
