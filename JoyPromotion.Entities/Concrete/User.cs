@@ -3,8 +3,10 @@ using System.Collections.Generic;
 
 namespace JoyPromotion.Entities.Concrete
 {
+    [Dapper.Contrib.Extensions.Table("Users")]
     public class User : IEntity
     {
+        [Dapper.Contrib.Extensions.Key]
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string SurName { get; set; }

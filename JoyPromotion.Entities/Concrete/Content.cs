@@ -2,8 +2,10 @@
 
 namespace JoyPromotion.Entities.Concrete
 {
+    [Dapper.Contrib.Extensions.Table("Contents")]
     public class Content : IEntity
     {
+        [Dapper.Contrib.Extensions.Key]
         public int Id { get; set; }
         public int CategoryId { get; set; }
         public int UserId { get; set; }
