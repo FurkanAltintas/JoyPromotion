@@ -1,0 +1,30 @@
+﻿@model CategoryListViewModel
+
+<table class="table table-hover table-striped" id="datatablesSimple">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (var i = 0; i < Model.Categories.Count; i++)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@Model.Categories[i].Name</td>
+                <td>
+                    <a asp-controller="Category" asp-action="Edit" asp-route-id="@Model.Categories[i].Id" class="btn btn-outline-warning btn-sm">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+          <th>#</th>
+            <th>Name</th>
+            <th></th>
+    </tfoot>
+</table>
+
+<a asp-controller="Category" asp-action="Add" class="btn btn-dark">Category Add</a>

@@ -1,0 +1,13 @@
+﻿@model CategoryUpdateViewModel
+
+<form asp-action="Edit" method="post">
+    <div class="form-group">
+        <label asp-for="CategoryUpdateDto.Name"></label>
+        <input asp-for="CategoryUpdateDto.Name" class="form-control" />
+        <span asp-validation-for="CategoryUpdateDto.Name"></span>
+    </div>
+
+    <div class="form-group">
+        <btn-button btn-type="submit" btn-class="btn-success" btn-value="Edit Category"></btn-button>
+    </div>
+</form>

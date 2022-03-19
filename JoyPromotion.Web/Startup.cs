@@ -34,6 +34,7 @@ namespace JoyPromotion.Web
                 options.ExpireTimeSpan = TimeSpan.FromDays(20); // Kullanýcýnýn ilgili bilgileri 20 gün boyunca hayatta kalýcak
                 options.LoginPath = new PathString("/Auth/Login");
             });
+
             services.AddCustomDependencies(Configuration);
             services.AddControllersWithViews().AddFluentValidation();
         }

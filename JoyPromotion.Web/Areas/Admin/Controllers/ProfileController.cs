@@ -1,11 +1,17 @@
 ﻿using JoyPromotion.Business.Abstract;
+using JoyPromotion.Dtos.Dtos;
 using JoyPromotion.Web.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
 
 namespace JoyPromotion.Web.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class ProfileController : Controller
     {
         private readonly IUserService _userService;
@@ -55,6 +61,21 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
         public IActionResult ChangePassword()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult ChangePassword(UserPasswordDto userPasswordDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _userService.FindByName(User.Identity.Name);
+                user.Password = userPasswordDto.Password;
+                _userService.Update(user);
+                HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                return RedirectToAction("Login", "Auth");
+            }
+
+            return View(userPasswordDto);
         }
     }
 }
