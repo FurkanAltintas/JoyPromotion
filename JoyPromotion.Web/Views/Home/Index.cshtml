@@ -1,0 +1,7 @@
+﻿@model ContentListViewModel
+
+@foreach (var content in Model.Contents)
+{
+    @content.Title @content.Id
+    <br />
+}

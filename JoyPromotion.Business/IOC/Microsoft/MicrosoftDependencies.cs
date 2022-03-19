@@ -21,6 +21,8 @@ namespace JoyPromotion.Business.IOC.Microsoft
             services.AddScoped(typeof(IGenericRepository<>), typeof(DpGenericRepository<>));
             services.AddScoped(typeof(IGenericService<>), typeof(GenericManager<>));
 
+            services.AddScoped<IContentService, ContentManager>();
+
             services.AddTransient<IValidator<CategoryAddDto>, CategoryAddDtoValidator>();
             services.AddTransient<IValidator<CategoryUpdateDto>, CategoryUpdateDtoValidator>();
             services.AddTransient<IValidator<ContentAddDto>, ContentAddDtoValidator>();
