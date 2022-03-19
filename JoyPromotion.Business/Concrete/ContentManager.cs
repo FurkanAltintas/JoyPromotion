@@ -41,9 +41,19 @@ namespace JoyPromotion.Business.Concrete
             return _mapper.Map<List<ContentListDto>>(_contentRepository.GetAll());
         }
 
+        public List<ContentListDto> GetAllOrderBy()
+        {
+            return _mapper.Map<List<ContentListDto>>(_contentRepository.GetAllOrderBy());
+        }
+
         public ContentDto GetById(int id)
         {
             return _mapper.Map<ContentDto>(_contentRepository.GetById(id));
+        }
+
+        public ContentDto TakeTheLast()
+        {
+            return _mapper.Map<ContentDto>(_contentRepository.TakeTheLast());
         }
 
         public ContentUpdateDto Update(ContentUpdateDto contentUpdateDto)

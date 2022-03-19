@@ -15,11 +15,23 @@ namespace JoyPromotion.Web.Controllers
 
         public IActionResult Index()
         {
-            var models = new ContentListViewModel
+            var model = new ContentListViewModelUI
             {
-                Contents = _contentService.GetAll()
+                ContentListDtos = _contentService.GetAllOrderBy(),
+                ContentDto = _contentService.TakeTheLast()
             };
-            return View(models);
+
+            return View(model);
+        }
+
+        public IActionResult Details(int Id)
+        {
+            var model = new ContentViewModelUI
+            {
+                ContentDto = _contentService.GetById(Id)
+            };
+
+            return View(model);
         }
     }
 }

@@ -1,7 +1,61 @@
-﻿@model ContentListViewModel
+﻿@model ContentListViewModelUI
 
-@foreach (var content in Model.Contents)
-{
-    @content.Title @content.Id
-    <br />
-}
+    <article class="top-one">
+            <div class="container">
+                <div class="top-img">
+                    <a asp-controller="Home" asp-action="Details" asp-route-title="@Model.ContentDto.SlugTitle" asp-route-id="@Model.ContentDto.Id">
+                        <img src="~/joy/img/background.jpg" class="img-fluid" alt="">
+                    </a>
+                </div>
+                <div class="top-content">
+                    <div class="top-content-category">
+                        FASHION
+                    </div>
+                    <div class="top-content-title">
+                        <a asp-controller="Home" asp-action="Details" asp-route-title="@Model.ContentDto.SlugTitle" asp-route-id="@Model.ContentDto.Id">
+                            @Model.ContentDto.Title
+                        </a>
+                    </div>
+                    <div class="top-content-description">
+                        @Model.ContentDto.Description
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <hr>
+
+        <article class="blog-tops">
+            <div class="container">
+                <div class="row">
+                    @foreach (var content in Model.ContentListDtos)
+                   {
+                       <div class="col-md-6">
+                        <div class="top-blog-img">
+                            <a asp-controller="Home" asp-action="Details" asp-route-title="@content.SlugTitle" asp-route-id="@content.Id">
+                                <img src="~/joy/img/taylor-joy.jpg" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="top-blog-content">
+                            <div class="top-blog-content-category">
+                                FASHION
+                            </div>
+                            <div class="top-blog-content-title">
+                                <a asp-controller="Home" asp-action="Details" asp-route-title="@content.SlugTitle" asp-route-id="@content.Id">
+                                    @content.Title
+                                </a>
+                            </div>
+                            <div class="top-blog-content-description">
+                                @content.Description
+                            </div>
+                        </div>
+                    </div>
+                   }
+
+                    <div class="col-md-12">
+                        <button class="btn btn-outline-dark">Load more</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+

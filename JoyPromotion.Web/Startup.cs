@@ -58,6 +58,11 @@ namespace JoyPromotion.Web
             {
                 endpoints.MapControllerRoute(name: "admin", pattern: "{area}/{controller=Home}/{action=Index}/{id?}");
 
+                endpoints.MapControllerRoute(
+                    name: "content",
+                    pattern: "{controller=Home}/{title}-{id}",
+                    defaults: new { controller = "Home", action = "Details" });
+
                 endpoints.MapDefaultControllerRoute();
             });
         }

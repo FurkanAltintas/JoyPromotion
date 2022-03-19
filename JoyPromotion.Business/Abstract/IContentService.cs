@@ -7,6 +7,8 @@ namespace JoyPromotion.Business.Abstract
     public interface IContentService
     {
         List<ContentListDto> GetAll();
+        List<ContentListDto> GetAllOrderBy();
+        ContentDto TakeTheLast();
         ContentDto GetById(int id);
         ContentAddDto Add(ContentAddDto contentAddDto);
         ContentUpdateDto Update(ContentUpdateDto contentUpdateDto);

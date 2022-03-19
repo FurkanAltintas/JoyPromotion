@@ -53,5 +53,12 @@ namespace JoyPromotion.Web.Controllers
 
             return View(userLoginViewModel);
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            // HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme).Wait(); ile de yapabiliriz
+            return RedirectToAction("Index", "Home", new { area = "" });
+        }
     }
 }
