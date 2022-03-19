@@ -1,0 +1,38 @@
+﻿@model ContentListViewModel
+
+@{
+    int i = 0;
+}
+
+<table class="table table-hover table-striped" id="datatablesSimple">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>SlugTitle</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var content in Model.ContentListDtos)
+        {
+            i++;
+                    <tr>
+                            <td>@i+1</td>
+                            <td>@content.Title</td>
+                            <td>@content.SlugTitle</td>
+                            <td>
+                                <a asp-controller="Content" asp-action="Edit" asp-route-id="@content.Id" class="btn btn-outline-warning btn-sm">Edit</a>
+                            </td>
+                        </tr>
+        }
+    </tbody>
+    <tfoot>
+            <th>#</th>
+            <th>Title</th>
+            <th>SlugTitle</th>
+            <th></th>
+    </tfoot>
+</table>
+
+<a asp-controller="Content" asp-action="Add" class="btn btn-dark">Content Add</a>

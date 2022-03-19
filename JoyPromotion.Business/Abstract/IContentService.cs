@@ -1,8 +1,16 @@
-﻿using JoyPromotion.Entities.Concrete;
+﻿using JoyPromotion.Dtos.Dtos;
+using JoyPromotion.Entities.Concrete;
+using System.Collections.Generic;
 
 namespace JoyPromotion.Business.Abstract
 {
-    public interface IContentService : IGenericService<Content>
+    public interface IContentService
     {
+        List<ContentListDto> GetAll();
+        ContentDto GetById(int id);
+        ContentAddDto Add(ContentAddDto contentAddDto);
+        ContentUpdateDto Update(ContentUpdateDto contentUpdateDto);
+        void Delete(Content content);
+        TDto Convert<TDto>(ContentDto contentDto);
     }
 }

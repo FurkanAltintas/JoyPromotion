@@ -1,0 +1,31 @@
+﻿@model ContentAddViewModel
+
+<form asp-action="Add" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="ContentAddDto.Title"></label>
+        <input asp-for="ContentAddDto.Title" class="form-control" />
+        <span asp-validation-for="ContentAddDto.Title"></span>
+    </div>
+
+        <div class="form-group">
+        <label asp-for="ContentAddDto.SlugTitle"></label>
+        <input asp-for="ContentAddDto.SlugTitle" class="form-control" />
+        <span asp-validation-for="ContentAddDto.SlugTitle"></span>
+    </div>
+
+        <div class="form-group">
+        <label asp-for="ContentAddDto.Description"></label>
+        <textarea asp-for="ContentAddDto.Description" class="form-control" rows="5" />
+        <span asp-validation-for="ContentAddDto.Description"></span>
+    </div>
+
+        <div class="form-group">
+        <label asp-for="ContentAddDto.ImageUrl"></label>
+        <input asp-for="ContentAddDto.ImageUrl" class="form-control" type="file" />
+        <span asp-validation-for="ContentAddDto.ImageUrl"></span>
+    </div>
+
+    <div class="form-group">
+        <btn-button btn-type="submit" btn-class="btn-success" btn-value="Add Content"></btn-button>
+    </div>
+</form>
