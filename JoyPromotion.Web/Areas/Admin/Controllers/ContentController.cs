@@ -3,6 +3,8 @@ using JoyPromotion.Dtos.Dtos;
 using JoyPromotion.Web.Areas.Admin.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Linq;
 
 namespace JoyPromotion.Web.Areas.Admin.Controllers
 {
@@ -11,10 +13,12 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
     public class ContentController : Controller
     {
         private readonly IContentService _contentService;
+        private readonly ICategoryService _categoryService;
 
-        public ContentController(IContentService contentService)
+        public ContentController(IContentService contentService, ICategoryService categoryService)
         {
             _contentService = contentService;
+            _categoryService = categoryService;
         }
 
         public IActionResult Index()
@@ -29,7 +33,7 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
 
         public IActionResult Add()
         {
-            return View(new ContentAddViewModel());
+            return View(new ContentAddViewModel { CategoryListDtos = _categoryService.GetAll().Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() }) });
         }
 
         [HttpPost]

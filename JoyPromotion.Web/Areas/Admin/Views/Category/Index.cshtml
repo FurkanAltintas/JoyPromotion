@@ -1,5 +1,9 @@
 ﻿@model CategoryListViewModel
 
+@{
+    int i = 0;
+}
+
 <table class="table table-hover table-striped" id="datatablesSimple">
     <thead>
         <tr>
@@ -9,15 +13,16 @@
         </tr>
     </thead>
     <tbody>
-        @for (var i = 0; i < Model.CategoryListDtos.Count; i++)
+        @foreach (var category in Model.CategoryListDtos)
         {
+            i++;
             <tr>
-                <td>@i+1</td>
-                <td>@Model.CategoryListDtos[i].Name</td>
-                <td>
-                    <a asp-controller="Category" asp-action="Edit" asp-route-id="@Model.CategoryListDtos[i].Id" class="btn btn-outline-warning btn-sm">Edit</a>
-                </td>
-            </tr>
+                    <td>@i</td>
+                    <td>@category.Name</td>
+                    <td>
+                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@category.Id" class="btn btn-outline-warning btn-sm">Edit</a>
+                    </td>
+                </tr>
         }
     </tbody>
     <tfoot>
