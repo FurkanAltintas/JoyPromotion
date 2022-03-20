@@ -1,4 +1,5 @@
 ﻿using JoyPromotion.Shared.Entities;
+using System.Collections.Generic;
 
 namespace JoyPromotion.Entities.Concrete
 {
@@ -16,5 +17,6 @@ namespace JoyPromotion.Entities.Concrete
 
         public Category Category { get; set; }
         public User User { get; set; }
+        public List<ContentTag> ContentTags { get; set; }
     }
 }
