@@ -4,6 +4,7 @@ using JoyPromotion.DataAccess.Abstract;
 using JoyPromotion.Dtos.Dtos;
 using JoyPromotion.Entities.Concrete;
 using JoyPromotion.Shared.DataAccess;
+using JoyPromotion.Shared.Utils;
 using System.Collections.Generic;
 
 namespace JoyPromotion.Business.Concrete
@@ -49,6 +50,16 @@ namespace JoyPromotion.Business.Concrete
         public ContentDto GetById(int id)
         {
             return _mapper.Map<ContentDto>(_contentRepository.GetById(id));
+        }
+
+        public ContentAddDto Insert(ContentAddDto contentAddDto, int userId, out int contentId)
+        {
+            var content = _mapper.Map<Content>(contentAddDto);
+            content.SlugTitle =  UrlExtensions.FriendlyUrl(content.Title);
+            content.UserId = userId;
+            _contentRepository.Add(content);
+            contentId = content.Id;
+            return contentAddDto;
         }
 
         public ContentDto TakeTheLast()

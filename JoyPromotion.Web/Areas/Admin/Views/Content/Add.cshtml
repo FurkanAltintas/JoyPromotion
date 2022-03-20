@@ -22,12 +22,12 @@
 
     <div class="form-group mb-3">
         <label asp-for="ContentAddDto.ImageUrl"></label>
-        <input asp-for="ContentAddDto.ImageUrl" class="form-control" type="file" />
+        <input asp-for="Image" class="form-control" type="file" />
         <span asp-validation-for="ContentAddDto.ImageUrl"></span>
     </div>
 
     <div class="form-group mb-3">
-        <select class="js-example-basic-multiple form-control" asp-items="Model.TagListDtos" multiple="multiple">
+        <select class="js-example-basic-multiple form-control" asp-for="TagId" asp-items="Model.TagListDtos" multiple="multiple">
         </select>
     </div>
 

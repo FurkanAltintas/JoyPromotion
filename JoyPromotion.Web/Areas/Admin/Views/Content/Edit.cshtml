@@ -1,31 +1,31 @@
 ﻿@model ContentUpdateViewModel
 
 <form asp-action="Edit" method="post" enctype="multipart/form-data">
-    <div class="form-group">
+    <div class="form-group mb-3">
         <label asp-for="ContentUpdateDto.Title"></label>
         <input asp-for="ContentUpdateDto.Title" class="form-control" />
         <span asp-validation-for="ContentUpdateDto.Title"></span>
     </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
         <label asp-for="ContentUpdateDto.SlugTitle"></label>
         <input asp-for="ContentUpdateDto.SlugTitle" class="form-control" />
         <span asp-validation-for="ContentUpdateDto.SlugTitle"></span>
     </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
         <label asp-for="ContentUpdateDto.Description"></label>
         <textarea asp-for="ContentUpdateDto.Description" class="form-control" rows="5" />
         <span asp-validation-for="ContentUpdateDto.Description"></span>
     </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
         <label asp-for="ContentUpdateDto.ImageUrl"></label>
         <input asp-for="ContentUpdateDto.ImageUrl" class="form-control" type="file" />
         <span asp-validation-for="ContentUpdateDto.ImageUrl"></span>
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-3">
         <btn-button btn-type="submit" btn-class="btn-success" btn-value="Edit Content"></btn-button>
     </div>
 </form>

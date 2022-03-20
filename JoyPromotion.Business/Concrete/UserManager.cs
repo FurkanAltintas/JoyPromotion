@@ -24,5 +24,10 @@ namespace JoyPromotion.Business.Concrete
         {
             return _userRepository.FindByName(userName);
         }
+
+        public User LoginUser(string userName, string password)
+        {
+            return _userRepository.LoginUser(userName, password);
+        }
     }
 }

@@ -26,13 +26,15 @@ namespace JoyPromotion.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(UserLoginViewModel userLoginViewModel)
         {
+            var user = _userService.LoginUser(userLoginViewModel.UserName, userLoginViewModel.Password);
             if (ModelState.IsValid)
             {
-                if (_userService.CheckUser(userLoginViewModel.UserName, userLoginViewModel.Password))
+                if (user != null) // _userService.CheckUser(userLoginViewModel.UserName, userLoginViewModel.Password)
                 {
                     var claims = new List<Claim>
                     {
                         new(ClaimTypes.Name, userLoginViewModel.UserName),
+                        new(ClaimTypes.NameIdentifier, user.Id.ToString()),
                         new(ClaimTypes.Role, "Admin")
                     };
 

@@ -1,9 +1,12 @@
 ﻿using JoyPromotion.Business.Abstract;
 using JoyPromotion.Dtos.Dtos;
 using JoyPromotion.Web.Areas.Admin.Models;
+using JoyPromotion.Web.Extensions;
+using JoyPromotion.Web.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Linq;
 
 namespace JoyPromotion.Web.Areas.Admin.Controllers
@@ -15,12 +18,14 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
         private readonly IContentService _contentService;
         private readonly ICategoryService _categoryService;
         private readonly ITagService _tagService;
+        private readonly IContentTagService _contentTagService;
 
-        public ContentController(IContentService contentService, ICategoryService categoryService, ITagService tagService)
+        public ContentController(IContentService contentService, ICategoryService categoryService, ITagService tagService, IContentTagService contentTagService)
         {
             _contentService = contentService;
             _categoryService = categoryService;
             _tagService = tagService;
+            _contentTagService = contentTagService;
         }
 
         public IActionResult Index()
@@ -42,7 +47,11 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
                     Text = c.Name,
                     Value = c.Id.ToString()
                 }),
-                TagListDtos = new SelectList(_tagService.GetAll(), "Id", "Name")
+                TagListDtos = _tagService.GetAll().Select(t => new SelectListItem
+                {
+                    Text = t.Name,
+                    Value = t.Id.ToString()
+                })
             });
         }
 
@@ -51,17 +60,19 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _contentService.Add(contentAddViewModel.ContentAddDto);
-                
+                new ImageFile().Upload(contentAddViewModel.Image, out string imageUrl);
+                contentAddViewModel.ContentAddDto.ImageUrl = imageUrl;
+                _contentService.Insert(contentAddViewModel.ContentAddDto, this.UserKey(), out int contentId);
+                _contentTagService.Add(contentAddViewModel.TagId, contentId);      
                 return RedirectToAction(nameof(Index));
             }
 
             return View(contentAddViewModel);
         }
 
-        public IActionResult Edit(int Id)
+        public IActionResult Edit(int id)
         {
-            var contentUpdateDto = _contentService.Convert<ContentUpdateDto>(_contentService.GetById(Id));
+            var contentUpdateDto = _contentService.Convert<ContentUpdateDto>(_contentService.GetById(id));
             return View(new ContentUpdateViewModel { ContentUpdateDto = contentUpdateDto });
         }
 

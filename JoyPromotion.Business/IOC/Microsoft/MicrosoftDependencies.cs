@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
 using JoyPromotion.Business.Abstract;
 using JoyPromotion.Business.Concrete;
-using JoyPromotion.Business.Mapping;
 using JoyPromotion.Business.ValidationRules.FluentValidation.DtoValidators;
 using JoyPromotion.DataAccess.Abstract;
 using JoyPromotion.DataAccess.Concrete.Dapper;
@@ -21,6 +20,7 @@ namespace JoyPromotion.Business.IOC.Microsoft
         {
             services.AddTransient<IDbConnection>(connection => new SqlConnection(configuration.GetConnectionString("JoyPromotionLocal")));
 
+
             services.AddScoped(typeof(IGenericRepository<>), typeof(DpGenericRepository<>));
             services.AddScoped(typeof(IGenericService<>), typeof(GenericManager<>));
 
@@ -36,7 +36,8 @@ namespace JoyPromotion.Business.IOC.Microsoft
             services.AddScoped<ITagRepository, DpTagRepository>();
             services.AddScoped<ITagService, TagManager>();
 
-            services.AddAutoMapper(typeof(MapperProfile));
+            services.AddScoped<IContentTagRepository, DpContentTagRepository>();
+            services.AddScoped<IContentTagService, ContentTagManager>();
 
             services.AddTransient<IValidator<CategoryAddDto>, CategoryAddDtoValidator>();
             services.AddTransient<IValidator<CategoryUpdateDto>, CategoryUpdateDtoValidator>();

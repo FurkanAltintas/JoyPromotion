@@ -33,5 +33,14 @@ namespace JoyPromotion.DataAccess.Concrete.Dapper
                 userName = userName
             });
         }
+
+        public User LoginUser(string userName, string password)
+        {
+            return _dbConnection.QueryFirstOrDefault<User>("select * from Users where UserName=@userName and Password=@password", new
+            {
+                userName = userName,
+                password = password
+            });
+        }
     }
 }

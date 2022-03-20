@@ -1,6 +1,7 @@
 ﻿using JoyPromotion.Business.Abstract;
 using JoyPromotion.Dtos.Dtos;
 using JoyPromotion.Web.Areas.Admin.Models;
+using JoyPromotion.Web.Utils;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -45,13 +46,9 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
             {
                 if (model.Image != null)
                 {
-                    var imageName = Guid.NewGuid() + Path.GetExtension(model.Image.FileName);
-                    var path = Directory.GetCurrentDirectory() + "/wwwroot/img/" + imageName;
-                    var stream = new FileStream(path, FileMode.Create);
-                    model.Image.CopyTo(stream);
-                    model.Users.ImageUrl = imageName;
+                    new ImageFile().Upload(model.Image, out string imageUrl);
+                    model.Users.ImageUrl = imageUrl;
                 }
-
                 _userService.Update(model.Users);
                 return RedirectToAction("Update");
             }
