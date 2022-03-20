@@ -11,6 +11,7 @@ namespace JoyPromotion.Business.Abstract
         ContentDto TakeTheLast();
         ContentDto GetById(int id);
         ContentAddDto Add(ContentAddDto contentAddDto);
+        ContentAddDto Insert(ContentAddDto contentAddDto, int userId, out int contentId);
         ContentUpdateDto Update(ContentUpdateDto contentUpdateDto);
         void Delete(Content content);
         TDto Convert<TDto>(ContentDto contentDto);
