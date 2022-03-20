@@ -1,6 +1,8 @@
-﻿namespace JoyPromotion.Dtos.Dtos
+﻿using JoyPromotion.Shared.Entities;
+
+namespace JoyPromotion.Dtos.Dtos
 {
-    public class ContentDto
+    public class ContentDto : IDto
     {
         public int Id { get; set; }
         public int CategoryId { get; set; }

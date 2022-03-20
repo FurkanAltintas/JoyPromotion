@@ -3,7 +3,7 @@ using JoyPromotion.Business.Abstract;
 using JoyPromotion.DataAccess.Abstract;
 using JoyPromotion.Dtos.Dtos;
 using JoyPromotion.Entities.Concrete;
-using System;
+using JoyPromotion.Shared.Entities;
 using System.Collections.Generic;
 
 namespace JoyPromotion.Business.Concrete
@@ -48,14 +48,19 @@ namespace JoyPromotion.Business.Concrete
             #endregion
         }
 
-        public TDto Convert<TDto>(ContentTagDto contentTagDto)
+        public TDto Convert<TDto>(IDto dto)
         {
-            return _mapper.Map<TDto>(contentTagDto);
+            return _mapper.Map<TDto>(dto);
         }
 
         public void Delete(ContentTag contentTag)
         {
             _contentTagRepository.Delete(contentTag);
+        }
+
+        public List<ContentTagListFetchDto> FetchTagsOfContent(int contentId)
+        {
+            return _contentTagRepository.FetchTagsOfContent<ContentTagListFetchDto>(contentId);
         }
 
         public List<ContentTagListDto> GetAll()

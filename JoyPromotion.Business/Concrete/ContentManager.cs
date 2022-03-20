@@ -3,7 +3,7 @@ using JoyPromotion.Business.Abstract;
 using JoyPromotion.DataAccess.Abstract;
 using JoyPromotion.Dtos.Dtos;
 using JoyPromotion.Entities.Concrete;
-using JoyPromotion.Shared.DataAccess;
+using JoyPromotion.Shared.Entities;
 using JoyPromotion.Shared.Utils;
 using System.Collections.Generic;
 
@@ -27,9 +27,9 @@ namespace JoyPromotion.Business.Concrete
             return contentAddDto;
         }
 
-        public TDto Convert<TDto>(ContentDto contentDto)
+        public TDto Convert<TDto>(IDto dto)
         {
-            return _mapper.Map<TDto>(contentDto);
+            return _mapper.Map<TDto>(dto);
         }
 
         public void Delete(Content content)

@@ -1,31 +1,68 @@
 ﻿@model ContentUpdateViewModel
 
 <form asp-action="Edit" method="post" enctype="multipart/form-data">
+
     <div class="form-group mb-3">
         <label asp-for="ContentUpdateDto.Title"></label>
         <input asp-for="ContentUpdateDto.Title" class="form-control" />
         <span asp-validation-for="ContentUpdateDto.Title"></span>
     </div>
 
-        <div class="form-group mb-3">
-        <label asp-for="ContentUpdateDto.SlugTitle"></label>
-        <input asp-for="ContentUpdateDto.SlugTitle" class="form-control" />
-        <span asp-validation-for="ContentUpdateDto.SlugTitle"></span>
+    <div class="form-group mb-3">
+        <label asp-for="ContentUpdateDto.CategoryId">Category</label>
+        <select asp-for="ContentUpdateDto.CategoryId" asp-items="Model.CategoryListDtos" class="form-control">
+        </select>
     </div>
 
         <div class="form-group mb-3">
         <label asp-for="ContentUpdateDto.Description"></label>
-        <textarea asp-for="ContentUpdateDto.Description" class="form-control" rows="5" />
+        <textarea asp-for="ContentUpdateDto.Description" class="form-control" id="summernote"></textarea>
         <span asp-validation-for="ContentUpdateDto.Description"></span>
     </div>
 
-        <div class="form-group mb-3">
+    <div class="form-group mb-3">
         <label asp-for="ContentUpdateDto.ImageUrl"></label>
-        <input asp-for="ContentUpdateDto.ImageUrl" class="form-control" type="file" />
+        <input asp-for="Image" class="form-control" type="file" />
         <span asp-validation-for="ContentUpdateDto.ImageUrl"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label>Selected tags</label>
+        <div class="form-control">
+            @foreach (var tag in Model.ContentTagFetchDtos)
+            {
+                    <random-color-badge rcb-value="@tag.Name"></random-color-badge>
+            }
+        </div>
+    </div>
+
+    <div class="form-group mb-3">
+        <select class="js-example-basic-multiple form-control" asp-for="TagId" asp-items="Model.TagListDtos" multiple="multiple">
+        </select>
     </div>
 
     <div class="form-group mb-3">
         <btn-button btn-type="submit" btn-class="btn-success" btn-value="Edit Content"></btn-button>
     </div>
 </form>
+
+@section Styles {
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    $('#summernote').summernote();
+    });
+
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2();
+    });
+    </script>
+}

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace JoyPromotion.Web.Areas.Admin.Controllers
@@ -63,7 +64,7 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
                 new ImageFile().Upload(contentAddViewModel.Image, out string imageUrl);
                 contentAddViewModel.ContentAddDto.ImageUrl = imageUrl;
                 _contentService.Insert(contentAddViewModel.ContentAddDto, this.UserKey(), out int contentId);
-                _contentTagService.Add(contentAddViewModel.TagId, contentId);      
+                _contentTagService.Add(contentAddViewModel.TagId, contentId);
                 return RedirectToAction(nameof(Index));
             }
 
@@ -73,7 +74,21 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
         public IActionResult Edit(int id)
         {
             var contentUpdateDto = _contentService.Convert<ContentUpdateDto>(_contentService.GetById(id));
-            return View(new ContentUpdateViewModel { ContentUpdateDto = contentUpdateDto });
+            return View(new ContentUpdateViewModel
+            {
+                ContentUpdateDto = contentUpdateDto,
+                CategoryListDtos = _categoryService.GetAll().Select(c => new SelectListItem
+                {
+                    Text = c.Name,
+                    Value = c.Id.ToString()
+                }),
+                TagListDtos = _tagService.GetAll().Select(t => new SelectListItem
+                {
+                    Text = t.Name,
+                    Value = t.Id.ToString()
+                }),
+                ContentTagFetchDtos = _contentTagService.FetchTagsOfContent(id)
+            });
         }
 
         [HttpPost]

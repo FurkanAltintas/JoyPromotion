@@ -1,5 +1,6 @@
 ﻿using JoyPromotion.Dtos.Dtos;
 using JoyPromotion.Entities.Concrete;
+using JoyPromotion.Shared.Entities;
 using System.Collections.Generic;
 
 namespace JoyPromotion.Business.Abstract
@@ -14,6 +15,6 @@ namespace JoyPromotion.Business.Abstract
         ContentAddDto Insert(ContentAddDto contentAddDto, int userId, out int contentId);
         ContentUpdateDto Update(ContentUpdateDto contentUpdateDto);
         void Delete(Content content);
-        TDto Convert<TDto>(ContentDto contentDto);
+        TDto Convert<TDto>(IDto dto);
     }
 }
