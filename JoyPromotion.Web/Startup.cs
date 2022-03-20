@@ -1,5 +1,6 @@
 using FluentValidation.AspNetCore;
 using JoyPromotion.Business.IOC.Microsoft;
+using JoyPromotion.Business.Mapping;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,9 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace JoyPromotion.Web
 {
@@ -36,6 +34,13 @@ namespace JoyPromotion.Web
             });
 
             services.AddCustomDependencies(Configuration);
+
+            services.AddAutoMapper(typeof(CategoryProfile),
+                                   typeof(ContentProfile),
+                                   typeof(SocialMediaProfile),
+                                   typeof(TagProfile),
+                                   typeof(UserProfile));
+
             services.AddControllersWithViews().AddFluentValidation();
         }
 
