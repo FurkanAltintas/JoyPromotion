@@ -29,6 +29,11 @@ namespace JoyPromotion.Business.Mapping
             CreateMap<User, UserListDto>().ReverseMap();
             CreateMap<User, UserAddDto>().ReverseMap();
             CreateMap<User, UserUpdateDto>().ReverseMap();
+
+            CreateMap<Tag, TagListDto>().ReverseMap();
+            CreateMap<Tag, TagDto>().ReverseMap();
+            CreateMap<Tag, TagAddDto>().ReverseMap();
+            CreateMap<Tag, TagUpdateDto>().ReverseMap();
         }
     }
 }

@@ -14,11 +14,13 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
     {
         private readonly IContentService _contentService;
         private readonly ICategoryService _categoryService;
+        private readonly ITagService _tagService;
 
-        public ContentController(IContentService contentService, ICategoryService categoryService)
+        public ContentController(IContentService contentService, ICategoryService categoryService, ITagService tagService)
         {
             _contentService = contentService;
             _categoryService = categoryService;
+            _tagService = tagService;
         }
 
         public IActionResult Index()
@@ -33,19 +35,28 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
 
         public IActionResult Add()
         {
-            return View(new ContentAddViewModel { CategoryListDtos = _categoryService.GetAll().Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() }) });
+            return View(new ContentAddViewModel
+            {
+                CategoryListDtos = _categoryService.GetAll().Select(c => new SelectListItem
+                {
+                    Text = c.Name,
+                    Value = c.Id.ToString()
+                }),
+                TagListDtos = new SelectList(_tagService.GetAll(), "Id", "Name")
+            });
         }
 
         [HttpPost]
-        public IActionResult Add(ContentAddDto contentAddDto)
+        public IActionResult Add(ContentAddViewModel contentAddViewModel)
         {
             if (ModelState.IsValid)
             {
-                _contentService.Add(contentAddDto);
+                _contentService.Add(contentAddViewModel.ContentAddDto);
+                
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(new ContentAddViewModel { ContentAddDto = contentAddDto });
+            return View(contentAddViewModel);
         }
 
         public IActionResult Edit(int Id)

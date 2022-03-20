@@ -8,5 +8,6 @@ namespace JoyPromotion.Web.Areas.Admin.Models
     {
         public ContentAddDto ContentAddDto { get; set; }
         public IEnumerable<SelectListItem> CategoryListDtos { get; set; }
+        public SelectList TagListDtos { get; set; }
     }
 }

@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using JoyPromotion.Shared.Entities;
+using System.Collections.Generic;
 
 namespace JoyPromotion.Entities.Concrete
 {
     [Dapper.Contrib.Extensions.Table("Tags")]
-    public class Tag
+    public class Tag : IEntity
     {
         [Dapper.Contrib.Extensions.Key]
         public int Id { get; set; }
