@@ -15,8 +15,8 @@ namespace JoyPromotion.Entities.Concrete
         public string Description { get; set; }
         public string ImageUrl { get; set; }
 
-        public Category Category { get; set; }
-        public User User { get; set; }
-        public List<ContentTag> ContentTags { get; set; }
+        // public Category Category { get; set; }
+        // public User User { get; set; }
+        // public List<ContentTag> ContentTags { get; set; }
     }
 }

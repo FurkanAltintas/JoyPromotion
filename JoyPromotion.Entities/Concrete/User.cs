@@ -17,7 +17,7 @@ namespace JoyPromotion.Entities.Concrete
         public string ImageUrl { get; set; }
         public string PhoneNumber { get; set; }
 
-        public List<Content> Contents { get; set; }
-        public List<UserSocialMedia> UserSocialMedias { get; set; }
+        // public List<Content> Contents { get; set; }
+        // public List<UserSocialMedia> UserSocialMedias { get; set; }
     }
 }

@@ -11,6 +11,6 @@ namespace JoyPromotion.Entities.Concrete
         public string Name { get; set; }
         public string Icon { get; set; }
 
-        public List<UserSocialMedia> UserSocialMedias { get; set; }
+        // public List<UserSocialMedia> UserSocialMedias { get; set; }
     }
 }
