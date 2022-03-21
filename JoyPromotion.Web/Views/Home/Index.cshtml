@@ -27,35 +27,41 @@
 
         <article class="blog-tops">
             <div class="container">
-                <div class="row">
-                    @foreach (var content in Model.ContentListDtos)
-                   {
-                       <div class="col-md-6">
-                        <div class="top-blog-img">
-                            <a asp-controller="Home" asp-action="Details" asp-route-title="@content.SlugTitle" asp-route-id="@content.Id">
-                                <img src="~/joy/img/taylor-joy.jpg" class="img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="top-blog-content">
-                            <div class="top-blog-content-category">
-                                FASHION
-                            </div>
-                            <div class="top-blog-content-title">
-                                <a asp-controller="Home" asp-action="Details" asp-route-title="@content.SlugTitle" asp-route-id="@content.Id">
-                                    @content.Title
-                                </a>
-                            </div>
-                            <div class="top-blog-content-description">
-                                @ContentExtensions.DescriptionSubstring(content.Description, 100)
-                            </div>
-                        </div>
-                    </div>
-                   }
-
-                    <div class="col-md-12">
-                        <button class="btn btn-outline-dark">Load more</button>
-                    </div>
+                <div id="content-main" class="row">            
+                    @await Html.PartialAsync("_Content", Model)
+                </div>
+                <div class="col-md-12">
+                        <button id="loadMore" class="btn btn-outline-dark">Load more</button>
                 </div>
             </div>
         </article>
+
+@section scripts {
+<script src="~/joy/js/jquery.min.js"></script>
+
+<script type="text/javascript">
+    var pageNo = 1;
+    var isPageLoad = true;
+
+    $(window).scroll(function () {
+        document.getElementById("loadMore").onclick=function() {
+            if (isPageLoad) {
+              $.ajax({
+                url:'/Home/Index',
+                data: { page : pageNo },
+                success: function (data) {
+                        if ($.trim(data) == '') {
+                            isPageLoad = false;
+                            $("#loadMore").hide();
+                        } else {
+                            $('#content-main').append(data);
+                            pageNo++;
+                        }
+                    }
+                });
+            }
+        }
+    });
+</script>
+}
 

@@ -1,0 +1,25 @@
+﻿@model ContentListViewModelUI
+
+ @foreach (var content in Model.ContentListDtos)
+{
+    <div class="col-md-6">
+     <div class="top-blog-img">
+         <a asp-controller="Home" asp-action="Details" asp-route-title="@content.SlugTitle" asp-route-id="@content.Id">
+             <img src="~/joy/img/taylor-joy.jpg" class="img-fluid" alt="">
+         </a>
+     </div>
+     <div class="top-blog-content">
+         <div class="top-blog-content-category">
+             FASHION
+         </div>
+         <div class="top-blog-content-title">
+             <a asp-controller="Home" asp-action="Details" asp-route-title="@content.SlugTitle" asp-route-id="@content.Id">
+                 @content.Title
+             </a>
+         </div>
+         <div class="top-blog-content-description">
+             @ContentExtensions.DescriptionSubstring(content.Description, 100)
+         </div>
+     </div>
+ </div>
+}
