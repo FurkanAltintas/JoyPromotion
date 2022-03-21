@@ -24,14 +24,7 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
             _userService = userService;
         }
 
-        public IActionResult Index()
-        {
-            var model = new UserViewModel
-            {
-                UserDto = User
-            };
-            return View(model);
-        }
+
 
         public IActionResult Update()
         {
