@@ -3,27 +3,24 @@
 <article class="top-one">
             <div class="container">
                 <div class="top-details-img">
+                    <a asp-controller="Home" asp-action="Details" asp-route-title="@Model.ContentDto.SlugTitle" asp-route-id="@Model.ContentDto.Id">
                     <img src="~/joy/img/background.jpg" class="img-fluid" alt="">
+                    </a>
                 </div>
                 <div class="top-content-details">
+
                     <div class="top-content-details-category">
                         FASHION
                     </div>
+
                     <div class="top-content-details-title">
                         @Model.ContentDto.Title
                     </div>
+
                     <div class="top-content-details-description">
                         @Html.Raw(Model.ContentDto.Description)
                     </div>
-                    <div class="top-details-content-images">
-                        <img src="~/joy/img/taylor-joy2.jpg" class="img-fluid" alt="">
-                        <img src="~/joy/img/taylor-joy3.jpg" class="img-fluid" alt="">
-                        <img src="~/joy/img/taylor-joy4.jpg" class="img-fluid" alt="">
-                        <img src="~/joy/img/taylor-joy5.jpg" class="img-fluid" alt="">
-                    </div>
-                    <div class="top-content-details-description">
-                        @Html.Raw(Model.ContentDto.Description)
-                    </div>
+
                     <div class="top-content-social-media">
                         <div class="details-social">
                            @if (Model.GetUserSocialMediaDtos.Count != 0)
@@ -36,6 +33,7 @@
                     }
                         </div>
                     </div>
+
                 </div>
             </div>
         </article>
@@ -49,7 +47,9 @@
             {
                                 <div class="col-md-4">
                                     <div class="lasts-blog-img">
+                                         <a asp-controller="Home" asp-action="Details" asp-route-title="@content.SlugTitle" asp-route-id="@content.Id">
                                         <img src="~/joy/img/taylor-joy8.jpg" class="img-fluid" alt="">
+                                        </a>
                                     </div>
                                     <div class="lasts-blog-content">
                                         <div class="lasts-blog-content-category">
@@ -59,7 +59,7 @@
                             @content.Title
                                         </div>
                                         <div class="lasts-blog-content-description">
-                            @content.Description
+                            @ContentExtensions.DescriptionSubstring(content.Description, 100)
                                         </div>
                                     </div>
                                 </div>

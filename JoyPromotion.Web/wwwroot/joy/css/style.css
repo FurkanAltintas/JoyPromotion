@@ -226,6 +226,17 @@ a:hover {
     padding-bottom: 25px;
 }
 
+.top-content-details-description img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    object-position: 50% 15%;
+    filter: grayscale(100%);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    transition-duration: 0.5s;
+}
+
 .top-details-content-images img {
     height: 250px;
     width: 100%;

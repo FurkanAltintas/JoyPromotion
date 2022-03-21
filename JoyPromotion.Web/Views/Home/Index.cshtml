@@ -17,7 +17,7 @@
                         </a>
                     </div>
                     <div class="top-content-description">
-                        @Html.Raw(Model.ContentDto.Description)
+                        @Html.Raw(ContentExtensions.DescriptionSubstring(Model.ContentDto.Description, 300))
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                                 </a>
                             </div>
                             <div class="top-blog-content-description">
-                                @Html.Raw(content.Description)
+                                @ContentExtensions.DescriptionSubstring(content.Description, 100)
                             </div>
                         </div>
                     </div>
