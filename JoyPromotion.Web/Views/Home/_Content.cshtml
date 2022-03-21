@@ -10,7 +10,7 @@
      </div>
      <div class="top-blog-content">
          <div class="top-blog-content-category">
-             FASHION
+             @content.CategoryName.ToUpper()
          </div>
          <div class="top-blog-content-title">
              <a asp-controller="Home" asp-action="Details" asp-route-title="@content.SlugTitle" asp-route-id="@content.Id">

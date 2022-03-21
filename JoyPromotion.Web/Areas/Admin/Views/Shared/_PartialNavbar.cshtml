@@ -16,11 +16,11 @@
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link @(controller=="Content"?active:null)" asp-controller="Content" asp-action="Index">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Contents
+                                Content
                             </a>
                             <a class="nav-link @(controller=="Category"?active:null)" asp-controller="Category" asp-action="Index">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Categories
+                                Category
                             </a>
                              <a class="nav-link @(controller=="User"?active:null)" asp-controller="User" asp-action="Index">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
@@ -28,13 +28,13 @@
                             </a>
                             <a class="nav-link @(controller=="SocialMedia"?active:null)" asp-controller="SocialMedia" asp-action="Index">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Social Medias
+                                Social Media
                             </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Start Bootstrap
+                        @User.Identity.Name
                     </div>
                 </nav>
             </div>

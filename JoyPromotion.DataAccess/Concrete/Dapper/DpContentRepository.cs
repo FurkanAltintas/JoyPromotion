@@ -18,24 +18,30 @@ namespace JoyPromotion.DataAccess.Concrete.Dapper
 
         public List<Content> GetAllOrderBy()
         {
-            return _dbConnection.Query<Content>("select * from Contents order by Id desc offset 1 rows").ToList();
+            return _dbConnection.Query<Content>(@"select co.Id, co.Title, co.SlugTitle, ca.Name as CategoryName,co.Description, co.ImageUrl
+            from Contents co
+            join Categories ca on
+            co.CategoryId = ca.Id
+            order by co.Id desc offset 1 rows").ToList();
         }
 
         public Content TakeTheLast()
         {
-            return _dbConnection.QueryFirstOrDefault<Content>("select top(1) * from Contents order by Id desc");
+            return _dbConnection.QueryFirstOrDefault<Content>(@"select top(1) co.Id, co.CategoryId, ca.Name CategoryName,co.UserId,
+            co.Title, co.SlugTitle, co.Description, co.ImageUrl 
+            from Contents co
+            join Categories ca on
+            co.CategoryId = ca.Id
+            order by co.Id desc");
         }
 
         public List<Content> TakeTheLastThree(int id)
         {
             return _dbConnection.Query<Content>(@"select top(3)
-            co.Id, co.CategoryId, ca.Name CategoryName, co.UserId, us.UserName UserName, co.Title,
-            co.SlugTitle, co.Description, co.ImageUrl from Contents as co
-            join Categories as ca on co.CategoryId = ca.Id
-            join Users as us on co.UserId = us.Id 
+            co.Id, co.Title, co.SlugTitle, co.Description, co.ImageUrl from Contents as co 
             where co.Id != @id order by co.Id desc", new
             {
-                @id=id
+                @id = id
             }).ToList();
         }
     }

@@ -9,8 +9,10 @@ namespace JoyPromotion.Business.Mapping
         public UserProfile()
         {
             CreateMap<User, UserListDto>().ReverseMap();
+            CreateMap<User, UserDto>().ReverseMap();
             CreateMap<User, UserAddDto>().ReverseMap();
             CreateMap<User, UserUpdateDto>().ReverseMap();
+            CreateMap<UserUpdateDto, User>().ReverseMap();
         }
     }
 }

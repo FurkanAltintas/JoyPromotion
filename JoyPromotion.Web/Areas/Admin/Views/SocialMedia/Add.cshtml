@@ -1,13 +1,13 @@
 ﻿@model SocialMediaAddViewModel
 
 <form asp-action="Add" method="post">
-    <div class="form-group">
+    <div class="form-group mb-3">
         <label asp-for="SocialMediaAddDto.Name"></label>
         <input asp-for="SocialMediaAddDto.Name" class="form-control" />
         <span asp-validation-for="SocialMediaAddDto.Name"></span>
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-3">
         <label asp-for="SocialMediaAddDto.Icon"></label>
         <input asp-for="SocialMediaAddDto.Icon" class="form-control" />
         <span asp-validation-for="SocialMediaAddDto.Icon"></span>

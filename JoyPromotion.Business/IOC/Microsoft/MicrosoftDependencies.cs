@@ -32,6 +32,8 @@ namespace JoyPromotion.Business.IOC.Microsoft
             services.AddScoped<ITagService, TagManager>();
             services.AddScoped<IContentTagRepository, DpContentTagRepository>();
             services.AddScoped<IContentTagService, ContentTagManager>();
+            services.AddScoped<ISocialMediaRepository, DpSocialMediaRepository>();
+            services.AddScoped<ISocialMediaService, SocialMediaManager>();
             services.AddScoped<IUserSocialMediaRepository, DpUserSocialMediaRepository>();
             services.AddScoped<IUserSocialMediaService, UserSocialMediaManager>();
 
