@@ -23,64 +23,21 @@ A simple demo site made using Dapper and Asp.Net Core
 ### Project Images
 ------------
 #### Home
+
+<video width="100%" height="400" controls="controls">
+  <source src="webUI.mkv" type="video/mp4" />
+</video>
+
 ![github](/JoyPromotion.Web/wwwroot/project-img/1.png)
-
-
-### Human Resource
-![github](/AdvertisementApp.UI/wwwroot/project/human-resource.png)
-
-
-### Human Resource Open
-![github](/AdvertisementApp.UI/wwwroot/project/human-resource-open.png)
-
-
-### Advertisement Send
-![github](/AdvertisementApp.UI/wwwroot/project/advertisement-send.png)
-
-
-### Advertisement Send Validate
-![github](/AdvertisementApp.UI/wwwroot/project/advertisement-send-validate.png)
-
-
-### Advertisement Send File Validate
-![github](/AdvertisementApp.UI/wwwroot/project/advertisement-send-file-validate.png)
-
-
-### Advertisement Send Military
-![github](/AdvertisementApp.UI/wwwroot/project/advertisement-send-military.png)
-
-
-### Advertisement List (Admin)
-![github](/AdvertisementApp.UI/wwwroot/project/advertisement-list.png)
-
-
-### Application List (Admin)
-![github](/AdvertisementApp.UI/wwwroot/project/application-list.png)
-
-
-### Application Update (Admin)
-![github](/AdvertisementApp.UI/wwwroot/project/application-update.png)
-
-
-### Application Create (Admin)
-![github](/AdvertisementApp.UI/wwwroot/project/application-create.png)
-
-
-### Account SignIn
-![github](/AdvertisementApp.UI/wwwroot/project/account-signin.png)
-
-
-### Account SignIn Validate
-![github](/AdvertisementApp.UI/wwwroot/project/account-signin-validate.png)
-
-
-### Account SignIn CapsLock Validate
-![github](/AdvertisementApp.UI/wwwroot/project/account-signin-capslock-validate.png)
-
-
-### Account SignUp
-![github](/AdvertisementApp.UI/wwwroot/project/account-signup.png)
-
-
-### Account SignUp Validate
-![github](/AdvertisementApp.UI/wwwroot/project/account-signup-validate.png)
+![github](/JoyPromotion.Web/wwwroot/project-img/2.png)
+![github](/JoyPromotion.Web/wwwroot/project-img/3.png)
+![github](/JoyPromotion.Web/wwwroot/project-img/4.png)
+![github](/JoyPromotion.Web/wwwroot/project-img/5.png)
+![github](/JoyPromotion.Web/wwwroot/project-img/6.png)
+![github](/JoyPromotion.Web/wwwroot/project-img/7.png)
+![github](/JoyPromotion.Web/wwwroot/project-img/8.png)
+![github](/JoyPromotion.Web/wwwroot/project-img/9.png)
+![github](/JoyPromotion.Web/wwwroot/project-img/10.png)
+![github](/JoyPromotion.Web/wwwroot/project-img/11.png)
+![github](/JoyPromotion.Web/wwwroot/project-img/12.png)
+![github](/JoyPromotion.Web/wwwroot/project-img/13.png)
