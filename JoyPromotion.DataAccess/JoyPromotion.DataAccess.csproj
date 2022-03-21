@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\JoyPromotion.Dtos\JoyPromotion.Dtos.csproj" />
     <ProjectReference Include="..\JoyPromotion.Entities\JoyPromotion.Entities.csproj" />
     <ProjectReference Include="..\JoyPromotion.Shared\JoyPromotion.Shared.csproj" />
   </ItemGroup>

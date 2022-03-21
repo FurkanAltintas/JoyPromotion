@@ -17,7 +17,7 @@
                         </a>
                     </div>
                     <div class="top-content-description">
-                        @Model.ContentDto.Description
+                        @Html.Raw(Model.ContentDto.Description)
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                                 </a>
                             </div>
                             <div class="top-blog-content-description">
-                                @content.Description
+                                @Html.Raw(content.Description)
                             </div>
                         </div>
                     </div>

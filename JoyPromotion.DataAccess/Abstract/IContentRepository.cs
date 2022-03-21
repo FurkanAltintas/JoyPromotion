@@ -8,5 +8,6 @@ namespace JoyPromotion.DataAccess.Abstract
     {
         List<Content> GetAllOrderBy();
         Content TakeTheLast();
+        List<Content> TakeTheLastThree(int id);
     }
 }

@@ -13,7 +13,7 @@
                         @Model.ContentDto.Title
                     </div>
                     <div class="top-content-details-description">
-                        @Model.ContentDto.Description
+                        @Html.Raw(Model.ContentDto.Description)
                     </div>
                     <div class="top-details-content-images">
                         <img src="~/joy/img/taylor-joy2.jpg" class="img-fluid" alt="">
@@ -22,14 +22,18 @@
                         <img src="~/joy/img/taylor-joy5.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="top-content-details-description">
-                        @Model.ContentDto.Description
+                        @Html.Raw(Model.ContentDto.Description)
                     </div>
                     <div class="top-content-social-media">
                         <div class="details-social">
-                            Follow
-                            <a href="#" target="_blank"><i class="fa fa-github"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                           @if (Model.GetUserSocialMediaDtos.Count != 0)
+                    {
+                        <text>Follow</text>
+                             foreach (var socialMedia in Model.GetUserSocialMediaDtos)
+                        {
+                              <a href="@socialMedia.Url" target="_blank"><i class="fa @socialMedia.Icon"></i></a>
+                        }
+                    }
                         </div>
                     </div>
                 </div>
@@ -41,57 +45,25 @@
         <article class="blog-lasts">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="lasts-blog-img">
-                            <img src="img/taylor-joy.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="lasts-blog-content">
-                            <div class="lasts-blog-content-category">
-                                FASHION
-                            </div>
-                            <div class="lasts-blog-content-title">
-                                Lorem ipsum dolor sit amet.
-                            </div>
-                            <div class="lasts-blog-content-description">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur esse eum omnis at
-                                praesentium voluptatibus! Debitis at asperiores quidem dolores?
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="lasts-blog-img">
-                            <img src="img/taylor-joy7.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="lasts-blog-content">
-                            <div class="lasts-blog-content-category">
-                                FASHION
-                            </div>
-                            <div class="lasts-blog-content-title">
-                                Lorem ipsum dolor sit amet.
-                            </div>
-                            <div class="lasts-blog-content-description">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur esse eum omnis at
-                                praesentium voluptatibus! Debitis at asperiores quidem dolores?
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="lasts-blog-img">
-                            <img src="img/taylor-joy8.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="lasts-blog-content">
-                            <div class="lasts-blog-content-category">
-                                FASHION
-                            </div>
-                            <div class="lasts-blog-content-title">
-                                Lorem ipsum dolor sit amet.
-                            </div>
-                            <div class="lasts-blog-content-description">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur esse eum omnis at
-                                praesentium voluptatibus! Debitis at asperiores quidem dolores?
-                            </div>
-                        </div>
-                    </div>
+            @foreach (var content in Model.TakeTheLastThreeDtos)
+            {
+                                <div class="col-md-4">
+                                    <div class="lasts-blog-img">
+                                        <img src="~/joy/img/taylor-joy8.jpg" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="lasts-blog-content">
+                                        <div class="lasts-blog-content-category">
+                            @content.CategoryName
+                                        </div>
+                                        <div class="lasts-blog-content-title">
+                            @content.Title
+                                        </div>
+                                        <div class="lasts-blog-content-description">
+                            @content.Description
+                                        </div>
+                                    </div>
+                                </div>
+            }
                 </div>
             </div>
         </article>

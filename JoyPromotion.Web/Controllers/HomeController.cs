@@ -7,10 +7,12 @@ namespace JoyPromotion.Web.Controllers
     public class HomeController : Controller
     {
         private readonly IContentService _contentService;
+        private readonly IUserSocialMediaService _userSocialMediaService;
 
-        public HomeController(IContentService contentService)
+        public HomeController(IContentService contentService, IUserSocialMediaService userSocialMediaService)
         {
             _contentService = contentService;
+            _userSocialMediaService = userSocialMediaService;
         }
 
         public IActionResult Index()
@@ -26,9 +28,12 @@ namespace JoyPromotion.Web.Controllers
 
         public IActionResult Details(int Id)
         {
+            var content = _contentService.GetById(Id);
             var model = new ContentViewModelUI
             {
-                ContentDto = _contentService.GetById(Id)
+                ContentDto = content,
+                TakeTheLastThreeDtos = _contentService.TakeTheLastThree(Id),
+                GetUserSocialMediaDtos = _userSocialMediaService.GetUserSocialMedia(content.UserId)
             };
 
             return View(model);

@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JoyPromotion.DataAccess\JoyPromotion.DataAccess.csproj" />
-    <ProjectReference Include="..\JoyPromotion.Dtos\JoyPromotion.Dtos.csproj" />
   </ItemGroup>
 
 </Project>

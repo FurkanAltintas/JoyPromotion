@@ -67,6 +67,11 @@ namespace JoyPromotion.Business.Concrete
             return _mapper.Map<ContentDto>(_contentRepository.TakeTheLast());
         }
 
+        public List<ContentListDto> TakeTheLastThree(int id)
+        {
+            return _mapper.Map<List<ContentListDto>>(_contentRepository.TakeTheLastThree(id));
+        }
+
         public ContentUpdateDto Update(ContentUpdateDto contentUpdateDto)
         {
             var updatedContent = _mapper.Map<Content>(contentUpdateDto);

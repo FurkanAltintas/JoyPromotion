@@ -9,6 +9,7 @@ namespace JoyPromotion.Business.Abstract
     {
         List<ContentListDto> GetAll();
         List<ContentListDto> GetAllOrderBy();
+        List<ContentListDto> TakeTheLastThree(int id);
         ContentDto TakeTheLast();
         ContentDto GetById(int id);
         ContentAddDto Add(ContentAddDto contentAddDto);

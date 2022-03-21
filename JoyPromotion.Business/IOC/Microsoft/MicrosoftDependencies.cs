@@ -20,33 +20,26 @@ namespace JoyPromotion.Business.IOC.Microsoft
         {
             services.AddTransient<IDbConnection>(connection => new SqlConnection(configuration.GetConnectionString("JoyPromotionLocal")));
 
-
             services.AddScoped(typeof(IGenericRepository<>), typeof(DpGenericRepository<>));
             services.AddScoped(typeof(IGenericService<>), typeof(GenericManager<>));
-
             services.AddScoped<IContentRepository, DpContentRepository>();
-            services.AddScoped<IContentService, ContentManager>();
-            
+            services.AddScoped<IContentService, ContentManager>();      
             services.AddScoped<IUserRepository, DpUserRepository>();
-            services.AddScoped<IUserService, UserManager>();
-            
+            services.AddScoped<IUserService, UserManager>();        
             services.AddScoped<ICategoryRepository, DpCategoryRepository>();
-            services.AddScoped<ICategoryService, CategoryManager>();
-            
+            services.AddScoped<ICategoryService, CategoryManager>();        
             services.AddScoped<ITagRepository, DpTagRepository>();
             services.AddScoped<ITagService, TagManager>();
-
             services.AddScoped<IContentTagRepository, DpContentTagRepository>();
             services.AddScoped<IContentTagService, ContentTagManager>();
+            services.AddScoped<IUserSocialMediaRepository, DpUserSocialMediaRepository>();
+            services.AddScoped<IUserSocialMediaService, UserSocialMediaManager>();
 
             services.AddTransient<IValidator<CategoryAddDto>, CategoryAddDtoValidator>();
             services.AddTransient<IValidator<CategoryUpdateDto>, CategoryUpdateDtoValidator>();
-            
             services.AddTransient<IValidator<ContentAddDto>, ContentAddDtoValidator>();
             services.AddTransient<IValidator<ContentUpdateDto>, ContentUpdateDtoValidator>();
-            
             services.AddTransient<IValidator<SocialMediaAddDto>, SocialMediaAddDtoValidator>();
-            
             services.AddTransient<IValidator<UserUpdateDto>, UserUpdateDtoValidator>();
             services.AddTransient<IValidator<UserPasswordDto>, UserPasswordDtoValidator>();
         }
