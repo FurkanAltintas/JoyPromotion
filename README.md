@@ -24,7 +24,7 @@ A simple demo site made using Dapper and Asp.Net Core
 ------------
 #### Home
 
-[![Watch the video](/JoyPromotion.Web/wwwroot/project-img/6.png)](/JoyPromotion.Web/wwwroot/project-img/webUI.mkv)
+https://user-images.githubusercontent.com/81911072/159372113-d10fd9d6-6c5f-4678-b255-39814b031a82.mp4
 
 ![github](/JoyPromotion.Web/wwwroot/project-img/1.png)
 ------------
