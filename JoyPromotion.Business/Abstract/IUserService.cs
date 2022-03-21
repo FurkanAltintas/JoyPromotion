@@ -8,8 +8,8 @@ namespace JoyPromotion.Business.Abstract
     {
         bool CheckUser(string userName, string password);
         User LoginUser(string userName, string password);
-        User FindByName(string userName);
-
+        UserDto FindByName(string userName);
+        void PaswordUpdate(string password, int userId);
         List<UserListDto> GetAll();
         UserDto GetById(int id);
         UserAddDto Add(UserAddDto userAddDto);

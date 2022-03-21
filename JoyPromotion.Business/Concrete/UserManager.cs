@@ -40,9 +40,9 @@ namespace JoyPromotion.Business.Concrete
             _userRepository.Delete(user);
         }
 
-        public User FindByName(string userName)
+        public UserDto FindByName(string userName)
         {
-            return _userRepository.FindByName(userName);
+            return _mapper.Map<UserDto>(_userRepository.FindByName(userName));
         }
 
         public List<UserListDto> GetAll()
@@ -58,6 +58,13 @@ namespace JoyPromotion.Business.Concrete
         public User LoginUser(string userName, string password)
         {
             return _userRepository.LoginUser(userName, password);
+        }
+
+        public void PaswordUpdate(string password, int userId)
+        {
+            var user = _userRepository.GetById(userId);
+            user.Password = password;
+            _userRepository.Update(user);
         }
 
         public UserUpdateDto Update(UserUpdateDto userUpdateDto)

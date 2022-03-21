@@ -1,6 +1,8 @@
 ﻿using JoyPromotion.Business.Abstract;
 using JoyPromotion.Dtos.Dtos;
+using JoyPromotion.Entities.Concrete;
 using JoyPromotion.Web.Areas.Admin.Models;
+using JoyPromotion.Web.Extensions;
 using JoyPromotion.Web.Utils;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -13,11 +15,11 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles = "Admin")]
-    public class ProfileController : Controller
+    public class ProfileController : BaseController
     {
         private readonly IUserService _userService;
 
-        public ProfileController(IUserService userService)
+        public ProfileController(IUserService userService):base(userService)
         {
             _userService = userService;
         }
@@ -26,33 +28,33 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
         {
             var model = new UserViewModel
             {
-                Users = _userService.FindByName(User.Identity.Name)
+                UserDto = User
             };
             return View(model);
         }
 
         public IActionResult Update()
         {
-            return View(new UserViewModel
+            return View(new UserUpdateViewModel
             {
-                Users = _userService.FindByName(User.Identity.Name)
+                UserDto = User
             });
         }
 
         [HttpPost]
-        public IActionResult Update(UserViewModel model)
+        public IActionResult Update(UserUpdateViewModel userUpdateViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (model.Image != null)
+                if (userUpdateViewModel.Image != null)
                 {
-                    new ImageFile().Upload(model.Image, out string imageUrl);
-                    model.Users.ImageUrl = imageUrl;
+                    new ImageFile().Upload(userUpdateViewModel.Image, out string imageUrl);
+                    userUpdateViewModel.UserDto.ImageUrl = imageUrl;
                 }
-                _userService.Update(model.Users);
-                return RedirectToAction("Update");
+                _userService.Update(_userService.Convert<UserUpdateDto>(userUpdateViewModel.UserDto));
+                return RedirectToAction(nameof(Update));
             }
-            return View(model);
+            return View(userUpdateViewModel);
         }
 
         public IActionResult ChangePassword()
@@ -65,14 +67,19 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _userService.FindByName(User.Identity.Name);
-                user.Password = userPasswordDto.Password;
-                _userService.Update(user);
+                _userService.PaswordUpdate(userPasswordDto.Password, this.UserKey());
                 HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
                 return RedirectToAction("Login", "Auth");
             }
 
             return View(userPasswordDto);
         }
+
+        #region Eski Yöntem
+        //public UserDto FindUser()
+        //{
+        //    return _userService.FindByName(this.UserName());
+        //}
+        #endregion
     }
 }
