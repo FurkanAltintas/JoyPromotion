@@ -24,7 +24,7 @@ A simple demo site made using Dapper and Asp.Net Core
 ### Project WebUI
 ------------
 - Template Name: Joy
-- Template URL:  [Joy (White Mode)](https://github.com/FurkanAltintas/Sites-I-ve-Made/tree/master/joy)
+- Template Url: [Joy (White Mode)](https://github.com/FurkanAltintas/Sites-I-ve-Made/tree/master/joy)
 - Author: Furkan Altıntaş
 
 
