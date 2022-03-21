@@ -25,7 +25,7 @@ A simple demo site made using Dapper and Asp.Net Core
 ------------
 - Template Name: Joy
 - Template Url: [Joy (White Mode)](https://github.com/FurkanAltintas/Sites-I-ve-Made/tree/master/joy)
-- Author: Furkan Altıntaş
+- Author: [Furkan Altıntaş](https://github.com/FurkanAltintas)
 
 
 ### Project Images
