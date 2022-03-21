@@ -30,7 +30,7 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
         {
             return View(new UserUpdateViewModel
             {
-                UserDto = User
+                UserUpdateDto = _userService.Convert<UserUpdateDto>(User)
             });
         }
 
@@ -42,9 +42,9 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
                 if (userUpdateViewModel.Image != null)
                 {
                     new ImageFile().Upload(userUpdateViewModel.Image, out string imageUrl);
-                    userUpdateViewModel.UserDto.ImageUrl = imageUrl;
+                    userUpdateViewModel.UserUpdateDto.ImageUrl = imageUrl;
                 }
-                _userService.Update(_userService.Convert<UserUpdateDto>(userUpdateViewModel.UserDto));
+                _userService.Update(userUpdateViewModel.UserUpdateDto);
                 return RedirectToAction(nameof(Update));
             }
             return View(userUpdateViewModel);
