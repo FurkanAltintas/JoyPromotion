@@ -1,4 +1,4 @@
-﻿namespace JoyPromotion.Dtos.Enums
+﻿namespace JoyPromotion.Shared.Enums
 {
     public enum RoleType
     {
