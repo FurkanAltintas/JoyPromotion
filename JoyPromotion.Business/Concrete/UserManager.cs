@@ -50,6 +50,11 @@ namespace JoyPromotion.Business.Concrete
             return _mapper.Map<List<UserListDto>>(_userRepository.GetAll());
         }
 
+        public List<UserListDto> GetAllUsersBelongingToTheRole(int roleId)
+        {
+            return _mapper.Map<List<UserListDto>>(_userRepository.GetAllUsersBelongingToTheRole(roleId));
+        }
+
         public UserDto GetById(int id)
         {
             return _mapper.Map<UserDto>(_userRepository.GetById(id));

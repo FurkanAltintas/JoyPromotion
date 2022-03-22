@@ -19,8 +19,7 @@ namespace JoyPromotion.Web
         {
             Configuration = configuration;
         }
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
@@ -33,13 +32,10 @@ namespace JoyPromotion.Web
                 options.LoginPath = new PathString("/Auth/Login");
             });
 
-            services.AddCustomDependencies(Configuration);
+            // services.AddSession();
+            // services.AddDistributedMemoryCache();
 
-            services.AddAutoMapper(typeof(CategoryProfile),
-                                   typeof(ContentProfile),
-                                   typeof(SocialMediaProfile),
-                                   typeof(TagProfile),
-                                   typeof(UserProfile));
+            services.AddCustomDependencies(Configuration);
 
             services.AddControllersWithViews().AddFluentValidation();
         }
@@ -53,6 +49,8 @@ namespace JoyPromotion.Web
             }
 
             app.UseStaticFiles();
+
+            // app.UseSession();
 
             app.UseRouting();
 

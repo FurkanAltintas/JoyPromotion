@@ -2,6 +2,7 @@
 using JoyPromotion.DataAccess.Abstract;
 using JoyPromotion.Entities.Concrete;
 using JoyPromotion.Shared.DataAccess.Dapper;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
@@ -32,6 +33,14 @@ namespace JoyPromotion.DataAccess.Concrete.Dapper
             {
                 userName = userName
             });
+        }
+
+        public List<User> GetAllUsersBelongingToTheRole(int roleId)
+        {
+            return _dbConnection.Query<User>("select * from Users where RoleId=@roleId", new
+            {
+                @roleId = roleId
+            }).ToList();
         }
 
         public User LoginUser(string userName, string password)

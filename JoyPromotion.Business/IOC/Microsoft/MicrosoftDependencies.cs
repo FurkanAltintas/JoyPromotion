@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using JoyPromotion.Business.Abstract;
 using JoyPromotion.Business.Concrete;
+using JoyPromotion.Business.Mapping;
 using JoyPromotion.Business.ValidationRules.FluentValidation.DtoValidators;
 using JoyPromotion.DataAccess.Abstract;
 using JoyPromotion.DataAccess.Concrete.Dapper;
@@ -36,6 +37,8 @@ namespace JoyPromotion.Business.IOC.Microsoft
             services.AddScoped<ISocialMediaService, SocialMediaManager>();
             services.AddScoped<IUserSocialMediaRepository, DpUserSocialMediaRepository>();
             services.AddScoped<IUserSocialMediaService, UserSocialMediaManager>();
+            services.AddScoped<IRoleRepository, DpRoleRepository>();
+            services.AddScoped<IRoleService, RoleManager>();
 
             services.AddTransient<IValidator<CategoryAddDto>, CategoryAddDtoValidator>();
             services.AddTransient<IValidator<CategoryUpdateDto>, CategoryUpdateDtoValidator>();
@@ -44,6 +47,13 @@ namespace JoyPromotion.Business.IOC.Microsoft
             services.AddTransient<IValidator<SocialMediaAddDto>, SocialMediaAddDtoValidator>();
             services.AddTransient<IValidator<UserUpdateDto>, UserUpdateDtoValidator>();
             services.AddTransient<IValidator<UserPasswordDto>, UserPasswordDtoValidator>();
+
+            services.AddAutoMapper(typeof(CategoryProfile),
+                       typeof(ContentProfile),
+                       typeof(SocialMediaProfile),
+                       typeof(TagProfile),
+                       typeof(UserProfile),
+                       typeof(RoleProfile));
         }
     }
 }

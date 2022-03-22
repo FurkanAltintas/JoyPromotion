@@ -11,6 +11,7 @@ namespace JoyPromotion.Business.Abstract
         UserDto FindByName(string userName);
         void PaswordUpdate(string password, int userId);
         List<UserListDto> GetAll();
+        List<UserListDto> GetAllUsersBelongingToTheRole(int roleId);
         UserDto GetById(int id);
         UserAddDto Add(UserAddDto userAddDto);
         UserUpdateDto Update(UserUpdateDto userUpdateDto);

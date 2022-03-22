@@ -1,0 +1,34 @@
+﻿@model RoleListViewModel
+
+@{
+    int i = 0;
+}
+
+<table class="table table-hover table-striped" id="datatablesSimple">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model.RoleListDtos)
+        {
+            i++;
+            <tr>
+                    <td>@i</td>
+                    <td>@role.Name</td>
+                    <td>
+                        <a asp-controller="Role" asp-action="Edit" asp-route-roleId="@role.Id" class="btn btn-outline-warning btn-sm">Edit</a>
+                        <a asp-controller="User" asp-action="UserRoles" asp-route-roleId="@role.Id" class="btn btn-outline-primary btn-sm">User Role</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+    <tfoot>
+          <th>#</th>
+            <th>Name</th>
+            <th></th>
+    </tfoot>
+</table>

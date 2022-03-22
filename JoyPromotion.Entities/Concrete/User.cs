@@ -1,5 +1,5 @@
 ﻿using JoyPromotion.Shared.Entities;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JoyPromotion.Entities.Concrete
 {
@@ -8,6 +8,10 @@ namespace JoyPromotion.Entities.Concrete
     {
         [Dapper.Contrib.Extensions.Key]
         public int Id { get; set; }
+        public int RoleId { get; set; }
+        [NotMapped]
+        public Role Role { get; set; }
+
         public string FirstName { get; set; }
         public string SurName { get; set; }
         public string UserName { get; set; }

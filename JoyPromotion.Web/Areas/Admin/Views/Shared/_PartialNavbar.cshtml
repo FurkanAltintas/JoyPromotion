@@ -1,4 +1,5 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http
+
 @{
     string controller = ViewContext.RouteData.Values["controller"].ToString();
     string active = "active";
@@ -22,10 +23,17 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Category
                             </a>
-                             <a class="nav-link @(controller=="User"?active:null)" asp-controller="User" asp-action="Index">
+                            @if(User.IsInRole("Admin")) {
+                            <a class="nav-link @(controller=="User"?active:null)" asp-controller="User" asp-action="Index">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 User
                             </a>
+
+                            <a class="nav-link @(controller=="Role"?active:null)" asp-controller="Role" asp-action="Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Role
+                            </a>
+                            }
                             <a class="nav-link @(controller=="SocialMedia"?active:null)" asp-controller="SocialMedia" asp-action="Index">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Social Media

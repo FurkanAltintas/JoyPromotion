@@ -2,8 +2,10 @@
 using JoyPromotion.Web.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -12,10 +14,12 @@ namespace JoyPromotion.Web.Controllers
     public class AuthController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IRoleService _roleService;
 
-        public AuthController(IUserService userService)
+        public AuthController(IUserService userService, IRoleService roleService)
         {
             _userService = userService;
+            _roleService = roleService;
         }
 
         public IActionResult Login()
@@ -35,7 +39,7 @@ namespace JoyPromotion.Web.Controllers
                     {
                         new(ClaimTypes.Name, userLoginViewModel.UserName),
                         new(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                        new(ClaimTypes.Role, "Admin")
+                        new(ClaimTypes.Role, _roleService.GetById(user.RoleId).Name)
                     };
 
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -47,12 +51,10 @@ namespace JoyPromotion.Web.Controllers
 
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new(claimsIdentity), authProperties);
 
-
                     return RedirectToAction("Index", "Home", new { area = "Admin" });
                 }
                 ModelState.AddModelError("", "Kullanıcı adı veya parola hatalı");
             }
-
             return View(userLoginViewModel);
         }
 

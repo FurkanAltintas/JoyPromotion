@@ -1,0 +1,19 @@
+﻿@model UserListViewModel
+
+<alert-count 
+    alert-color="success" 
+    alert-count="@Model.UserListDtos.Count" 
+    alert-message="Number of users with the role">
+</alert-count>
+
+@foreach (var user in Model.UserListDtos)
+{
+    <div class="card">
+        <div class="card-body">
+            <p>FullName : @user.FirstName @user.SurName</p>
+            <p>Email : @user.Email</p>
+            <p>Phone Number : @user.PhoneNumber</p>
+            <p>Address : @user.Address</p>
+        </div>
+    </div>
+}
