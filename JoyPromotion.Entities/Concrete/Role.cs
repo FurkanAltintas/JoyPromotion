@@ -10,8 +10,5 @@ namespace JoyPromotion.Entities.Concrete
         [Dapper.Contrib.Extensions.Key]
         public int Id { get; set; }
         public string Name { get; set; }
-
-        [NotMapped]
-        public List<User> Users { get; set; }
     }
 }

@@ -4,6 +4,7 @@ namespace JoyPromotion.Dtos.Dtos
 {
     public class UserAddDto : IDto
     {
+        public int RoleId { get; set; }
         public string FirstName { get; set; }
         public string SurName { get; set; }
         public string UserName { get; set; }

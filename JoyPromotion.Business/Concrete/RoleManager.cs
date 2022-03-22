@@ -2,6 +2,7 @@
 using JoyPromotion.Business.Abstract;
 using JoyPromotion.DataAccess.Abstract;
 using JoyPromotion.Dtos.Dtos;
+using JoyPromotion.Entities.Concrete;
 using System.Collections.Generic;
 
 namespace JoyPromotion.Business.Concrete
@@ -30,6 +31,13 @@ namespace JoyPromotion.Business.Concrete
         public RoleDto GetById(int id)
         {
             return _mapper.Map<RoleDto>(_roleRepository.GetById(id));
+        }
+
+        public RoleUpdateDto Update(RoleUpdateDto roleUpdateDto)
+        {
+            var updatedRole = _mapper.Map<Role>(roleUpdateDto);
+            _roleRepository.Update(updatedRole);
+            return roleUpdateDto;
         }
     }
 }

@@ -1,8 +1,9 @@
 ﻿using JoyPromotion.Business.Abstract;
-using JoyPromotion.Dtos.Enums;
 using JoyPromotion.Web.Areas.Admin.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Linq;
 
 namespace JoyPromotion.Web.Areas.Admin.Controllers
 {
@@ -11,10 +12,12 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
     public class UserController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IRoleService _roleService;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IRoleService roleService)
         {
             _userService = userService;
+            _roleService = roleService;
         }
 
         public IActionResult Index()
@@ -26,13 +29,27 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
             return View(userListViewModel);
         }
 
+        public IActionResult Add()
+        {
+            return View(new UserAddViewModel
+            {
+                Roles = new SelectList(_roleService.GetAll(), "Id", "Name")
+            });
+        }
+
+        [HttpPost]
+        public IActionResult Add(UserAddViewModel userAddViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _userService.Add(userAddViewModel.UserAddDto);
+            }
+
+            return View(userAddViewModel);
+        }
+
         public IActionResult UserRoles(int roleId)
         {
-            var role = RoleType.Admin;
-            var role2 = RoleType.Admin.ToString();
-            var role3 = RoleType.Admin.ToString("d");
-            var role4 = RoleType.Admin.ToString("f");
-
             var userListViewModel = new UserListViewModel
             {
                 UserListDtos = _userService.GetAllUsersBelongingToTheRole(roleId)

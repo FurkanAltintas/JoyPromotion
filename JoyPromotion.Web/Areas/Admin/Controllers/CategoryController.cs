@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace JoyPromotion.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Writer")]
+    //[Filters.Authorize]
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;
@@ -19,6 +20,10 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
+            var area = ControllerContext.ActionDescriptor.RouteValues["area"];
+            var actionName = ControllerContext.ActionDescriptor.ActionName;
+            var controllerName = ControllerContext.ActionDescriptor.ControllerName;
+
             var model = new CategoryListViewModel
             {
                 CategoryListDtos = _categoryService.GetAll()

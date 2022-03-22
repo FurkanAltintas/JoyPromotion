@@ -5,6 +5,7 @@ namespace JoyPromotion.Dtos.Dtos
     public class UserListDto : IDto
     {
         public int Id { get; set; }
+        public int RoleId { get; set; }
         public string FirstName { get; set; }
         public string SurName { get; set; }
         public string Email { get; set; }

@@ -55,7 +55,7 @@ namespace JoyPromotion.Business.Concrete
         public ContentAddDto Insert(ContentAddDto contentAddDto, int userId, out int contentId)
         {
             var content = _mapper.Map<Content>(contentAddDto);
-            content.SlugTitle =  UrlExtensions.FriendlyUrl(content.Title);
+            content.SlugTitle = UrlExtensions.FriendlyUrl(content.Title);
             content.UserId = userId;
             _contentRepository.Add(content);
             contentId = content.Id;

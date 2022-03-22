@@ -7,6 +7,7 @@ namespace JoyPromotion.Business.Abstract
     {
         List<RoleListDto> GetAll();
         RoleDto GetById(int id);
+        RoleUpdateDto Update(RoleUpdateDto roleUpdateDto);
         TDto Convert<TDto>(RoleDto roleDto);
     }
 }
