@@ -1,6 +1,6 @@
 using FluentValidation.AspNetCore;
 using JoyPromotion.Business.IOC.Microsoft;
-using JoyPromotion.Business.Mapping;
+using JoyPromotion.Shared.Utils;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,6 +34,8 @@ namespace JoyPromotion.Web
 
             // services.AddSession();
             // services.AddDistributedMemoryCache();
+
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
 
             services.AddCustomDependencies(Configuration);
 
