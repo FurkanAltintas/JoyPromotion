@@ -1,6 +1,5 @@
 using FluentValidation.AspNetCore;
 using JoyPromotion.Business.IOC.Microsoft;
-using JoyPromotion.Shared.Utils;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,23 +21,7 @@ namespace JoyPromotion.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
-            {
-                options.Cookie.Name = "JoyPromotion"; // Cookie'nin tarayýcýda gözükeceði adý
-                options.Cookie.HttpOnly = true;
-                options.Cookie.SameSite = SameSiteMode.Strict; // Diðer web sitelerin cookie kullanýmýný kapadýk
-                options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest; // Bu cookie hem https de hem de http de çalýþacak
-                options.ExpireTimeSpan = TimeSpan.FromDays(20); // Kullanýcýnýn ilgili bilgileri 20 gün boyunca hayatta kalýcak
-                options.LoginPath = new PathString("/Auth/Login");
-            });
-
-            // services.AddSession();
-            // services.AddDistributedMemoryCache();
-
-            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
-
             services.AddCustomDependencies(Configuration);
-
             services.AddControllersWithViews().AddFluentValidation();
         }
 
@@ -48,6 +31,11 @@ namespace JoyPromotion.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/error");
+                app.UseHsts();
             }
 
             app.UseStaticFiles();
