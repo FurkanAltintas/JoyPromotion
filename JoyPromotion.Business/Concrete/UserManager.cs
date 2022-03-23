@@ -4,6 +4,7 @@ using JoyPromotion.DataAccess.Abstract;
 using JoyPromotion.Dtos.Dtos;
 using JoyPromotion.Entities.Concrete;
 using JoyPromotion.Shared.Utils;
+using System;
 using System.Collections.Generic;
 
 namespace JoyPromotion.Business.Concrete
@@ -22,9 +23,12 @@ namespace JoyPromotion.Business.Concrete
         public UserAddDto Add(UserAddDto userAddDto)
         {
             var addedUser = _mapper.Map<User>(userAddDto);
+            #region FirstName & SurName = UserName
             string fullName = string.Format(addedUser.FirstName + addedUser.SurName);
-            addedUser.UserName = UserNameExtensions.UserName(fullName);
-            addedUser.Password = fullName;
+            string tag = Guid.NewGuid().ToString().Substring(0, 4);
+            addedUser.UserName = UserNameExtensions.UserName(fullName) + tag;
+            #endregion
+            addedUser.Password = "123";
             _userRepository.Add(addedUser);
             return userAddDto;
         }

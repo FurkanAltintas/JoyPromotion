@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace JoyPromotion.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Writer")]
+    [Authorize(Roles = "Admin, Writer")]
     //[Filters.Authorize]
     public class CategoryController : Controller
     {
