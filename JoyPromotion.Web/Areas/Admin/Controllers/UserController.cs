@@ -1,4 +1,5 @@
 ﻿using JoyPromotion.Business.Abstract;
+using JoyPromotion.Shared.Utils.Security;
 using JoyPromotion.Web.Areas.Admin.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,12 +30,26 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
             return View(userListViewModel);
         }
 
+        [Route("password-key")]
+        public string Password()
+        {
+            return GenerateRandomPassword.Password();
+        }
+
+        [Route("get-captcha-image")]
+        public string GetCaptchaImage()
+        {
+            return new string(GenerateRandomPassword.Password());
+        }
+
         public IActionResult Add()
         {
             return View(new UserAddViewModel
             {
                 Roles = new SelectList(_roleService.GetAll(), "Id", "Name")
             });
+
+            //  UserAddDto = !string.IsNullOrEmpty(pass) ? new() { Password = GenerateRandomPassword.Password() } : null
         }
 
         [HttpPost]

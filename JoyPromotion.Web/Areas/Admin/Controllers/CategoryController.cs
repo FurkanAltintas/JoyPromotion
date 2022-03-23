@@ -3,6 +3,7 @@ using JoyPromotion.Dtos.Dtos;
 using JoyPromotion.Web.Areas.Admin.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Xml;
 
 namespace JoyPromotion.Web.Areas.Admin.Controllers
 {
@@ -20,10 +21,6 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var area = ControllerContext.ActionDescriptor.RouteValues["area"];
-            var actionName = ControllerContext.ActionDescriptor.ActionName;
-            var controllerName = ControllerContext.ActionDescriptor.ControllerName;
-
             var model = new CategoryListViewModel
             {
                 CategoryListDtos = _categoryService.GetAll()

@@ -28,7 +28,6 @@ namespace JoyPromotion.Business.Concrete
             string tag = Guid.NewGuid().ToString().Substring(0, 4);
             addedUser.UserName = UserNameExtensions.UserName(fullName) + tag;
             #endregion
-            addedUser.Password = "123";
             _userRepository.Add(addedUser);
             return userAddDto;
         }
