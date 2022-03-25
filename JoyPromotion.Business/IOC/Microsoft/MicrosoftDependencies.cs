@@ -26,6 +26,8 @@ namespace JoyPromotion.Business.IOC.Microsoft
 
             Cookie(services);
 
+            Session(services);
+
             Generic(services);
 
             Validator(services);
@@ -53,6 +55,12 @@ namespace JoyPromotion.Business.IOC.Microsoft
             // services.AddDistributedMemoryCache();
         }
 
+        private static void Session(IServiceCollection services)
+        {
+            services.AddSession();
+            services.AddDistributedMemoryCache();
+        }
+
         private static void Generic(IServiceCollection services)
         {
             services.AddScoped(typeof(IGenericRepository<>), typeof(DpGenericRepository<>));
@@ -73,6 +81,8 @@ namespace JoyPromotion.Business.IOC.Microsoft
             services.AddScoped<IUserSocialMediaService, UserSocialMediaManager>();
             services.AddScoped<IRoleRepository, DpRoleRepository>();
             services.AddScoped<IRoleService, RoleManager>();
+            services.AddScoped<IContactRepository, DpContactRepository>();
+            services.AddScoped<IContactService, ContactManager>();
         }
 
         private static void Validator(IServiceCollection services)
@@ -84,6 +94,7 @@ namespace JoyPromotion.Business.IOC.Microsoft
             services.AddTransient<IValidator<SocialMediaAddDto>, SocialMediaAddDtoValidator>();
             services.AddTransient<IValidator<UserUpdateDto>, UserUpdateDtoValidator>();
             services.AddTransient<IValidator<UserPasswordDto>, UserPasswordDtoValidator>();
+            services.AddTransient<IValidator<ContactAddDto>, ContactAddDtoValidator>();
         }
 
         private static void Mapper(IServiceCollection services)
@@ -93,7 +104,8 @@ namespace JoyPromotion.Business.IOC.Microsoft
                        typeof(SocialMediaProfile),
                        typeof(TagProfile),
                        typeof(UserProfile),
-                       typeof(RoleProfile));
+                       typeof(RoleProfile),
+                       typeof(ContactProfile));
         }
     }
 }
