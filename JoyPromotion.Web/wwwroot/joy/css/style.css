@@ -305,6 +305,20 @@ a:hover {
     
 }
 
+.contact {
+    padding: 50px;
+    padding-bottom: 75px;
+}
+
+.contact .container label {
+    float:left;
+    margin-bottom: 6px;
+}
+
+.contact .container button {
+    float: left;
+}
+
 
 @media (max-width: 780px) {
     .top-content,
