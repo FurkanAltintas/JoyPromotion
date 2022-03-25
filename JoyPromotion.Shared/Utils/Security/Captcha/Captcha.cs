@@ -31,6 +31,7 @@ namespace JoyPromotion.Shared.Utils.Security.Captcha
         public static bool ValidateCaptchaCode(string userInputCaptcha, HttpContext context)
         {
             var isValid = userInputCaptcha == context.Session.GetString(CaptchaCode);
+            // GetString kullanabilmek için Nuget üzerinden Microsoft.AspNetCore.Http.Extensions kurmanız gerekmektedir.
             context.Session.Remove(CaptchaCode);
             return isValid;
         }
