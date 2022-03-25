@@ -1,8 +1,9 @@
-﻿using System;
+﻿using JoyPromotion.Shared.Entities;
+using System;
 
 namespace JoyPromotion.Dtos.Dtos
 {
-    public class ContactListDto
+    public class ContactListDto : IDto
     {
         public int Id { get; set; }
         public string FullName { get; set; }

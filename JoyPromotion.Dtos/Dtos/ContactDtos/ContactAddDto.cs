@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using JoyPromotion.Shared.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace JoyPromotion.Dtos.Dtos
 {
-    public class ContactAddDto
+    public class ContactAddDto : IDto
     {
         public string FullName { get; set; }
         public string Email { get; set; }
