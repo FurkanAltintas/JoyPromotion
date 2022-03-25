@@ -1,9 +1,10 @@
-﻿using System;
+﻿using JoyPromotion.Shared.Entities;
+using System;
 
 namespace JoyPromotion.Entities.Concrete
 {
     [Dapper.Contrib.Extensions.Table("Contacts")]
-    public class Contact
+    public class Contact : IEntity
     {
         [Dapper.Contrib.Extensions.Key]
         public int Id { get; set; }
