@@ -44,6 +44,8 @@ namespace JoyPromotion.Web
 
             app.UseRouting();
 
+            app.UseSession();
+
             app.UseAuthentication(); // giriþ iþlemi
             app.UseAuthorization(); // yetki iþlemi
 

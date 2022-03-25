@@ -319,6 +319,10 @@ a:hover {
     float: left;
 }
 
+.contact .container .captcha img {
+    float: left;
+}
+
 
 @media (max-width: 780px) {
     .top-content,
