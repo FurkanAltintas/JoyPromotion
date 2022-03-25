@@ -2,6 +2,7 @@
 using JoyPromotion.Shared.Utils.Security;
 using JoyPromotion.Web.Areas.Admin.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
@@ -36,20 +37,15 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
             return GenerateRandomPassword.Password();
         }
 
-        [Route("get-captcha-image")]
-        public string GetCaptchaImage()
+        public IActionResult Add(IFormCollection pass)
         {
-            return new string(GenerateRandomPassword.Password());
-        }
+            string password = pass["pass"];
 
-        public IActionResult Add()
-        {
             return View(new UserAddViewModel
             {
-                Roles = new SelectList(_roleService.GetAll(), "Id", "Name")
+                Roles = new SelectList(_roleService.GetAll(), "Id", "Name"),
+                UserAddDto = !string.IsNullOrEmpty(password) ? new() { Password = Password() } : null
             });
-
-            //  UserAddDto = !string.IsNullOrEmpty(pass) ? new() { Password = GenerateRandomPassword.Password() } : null
         }
 
         [HttpPost]

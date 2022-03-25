@@ -30,13 +30,8 @@
     <div class="form-group mb-3">
         <label asp-for="UserAddDto.Password"></label>
         <input asp-for="UserAddDto.Password" class="form-control" />
-        <span id="pass" class="~/password-key">.</span>
         <span asp-validation-for="UserAddDto.Password"></span>
     </div>
-
-         <div class="input-group-prepend">
-            <img id="img-captcha" src="~/get-captcha-image" />
-        </div>
 
         <div class="form-group mb-3">
         <label asp-for="UserAddDto.PhoneNumber"></label>
@@ -55,24 +50,3 @@
     </div>
 
 </form>
-
-@section Scripts {
-<script src="~/joy/js/jquery.min.js"></script>
-<script>
-    $("#pass").click(function () {
-        password();
-    });
-
-    function password() {
-        $("#pass").attr("class", "/password-key")
-    }
-
-    $("#img-captcha").click(function () {
-        resetCaptchaImage();
-    });
-
-    function resetCaptchaImage() {
-        $("#img-captcha").attr("src", "/get-captcha-image?");
-    }
-</script>
-}
