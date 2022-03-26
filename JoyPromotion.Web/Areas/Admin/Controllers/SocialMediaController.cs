@@ -41,7 +41,7 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(new SocialMediaAddViewModel { SocialMediaAddDto = socialMediaAddDto});
+            return View(new SocialMediaAddViewModel { SocialMediaAddDto = socialMediaAddDto });
         }
 
         public IActionResult Edit(int Id)

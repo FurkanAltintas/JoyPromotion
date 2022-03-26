@@ -4,7 +4,7 @@ using JoyPromotion.Entities.Concrete;
 
 namespace JoyPromotion.Business.Mapping
 {
-    public  class ContactProfile : Profile
+    public class ContactProfile : Profile
     {
         public ContactProfile()
         {

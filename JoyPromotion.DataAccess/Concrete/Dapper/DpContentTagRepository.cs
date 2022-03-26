@@ -23,7 +23,7 @@ namespace JoyPromotion.DataAccess.Concrete.Dapper
                                   t.Id = ct.TagId
                                   where ct.ContentId = @contentId", new
             {
-                                    contentId = contentId
+                contentId = contentId
             }).ToList();
         }
     }

@@ -1,6 +1,4 @@
 ﻿using JoyPromotion.Shared.Entities;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JoyPromotion.Entities.Concrete
 {

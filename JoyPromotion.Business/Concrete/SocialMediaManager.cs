@@ -3,9 +3,8 @@ using JoyPromotion.Business.Abstract;
 using JoyPromotion.DataAccess.Abstract;
 using JoyPromotion.Dtos.Dtos;
 using JoyPromotion.Entities.Concrete;
-using System;
 using System.Collections.Generic;
- 
+
 namespace JoyPromotion.Business.Concrete
 {
     public class SocialMediaManager : ISocialMediaService

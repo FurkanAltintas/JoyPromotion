@@ -2,7 +2,7 @@
 
 namespace JoyPromotion.Dtos.Dtos
 {
-    public class UserSocialMediaListDto :IDto
+    public class UserSocialMediaListDto : IDto
     {
         public int Id { get; set; }
         public int SocialMediaId { get; set; }

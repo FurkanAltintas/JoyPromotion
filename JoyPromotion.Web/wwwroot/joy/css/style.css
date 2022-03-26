@@ -323,10 +323,12 @@ a:hover {
     float: left;
 }
 
+#img-captcha {
+    margin-bottom: 1rem !important;
+}
 
 @media (max-width: 780px) {
-    .top-content,
-    .top-content-details {
+    .top-content, .top-content-details {
         padding: 0;
         padding-top: 10px;
         padding-bottom: 10px;

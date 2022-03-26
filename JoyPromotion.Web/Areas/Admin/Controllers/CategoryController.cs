@@ -3,7 +3,6 @@ using JoyPromotion.Dtos.Dtos;
 using JoyPromotion.Web.Areas.Admin.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Xml;
 
 namespace JoyPromotion.Web.Areas.Admin.Controllers
 {

@@ -1,6 +1,5 @@
 ﻿using JoyPromotion.Dtos.Dtos;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Collections.Generic;
 
 namespace JoyPromotion.Web.Areas.Admin.Models
 {

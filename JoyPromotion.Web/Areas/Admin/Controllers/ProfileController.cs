@@ -1,6 +1,5 @@
 ﻿using JoyPromotion.Business.Abstract;
 using JoyPromotion.Dtos.Dtos;
-using JoyPromotion.Entities.Concrete;
 using JoyPromotion.Web.Areas.Admin.Models;
 using JoyPromotion.Web.Extensions;
 using JoyPromotion.Web.Utils;
@@ -8,8 +7,6 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.IO;
 
 namespace JoyPromotion.Web.Areas.Admin.Controllers
 {
@@ -19,7 +16,7 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
     {
         private readonly IUserService _userService;
 
-        public ProfileController(IUserService userService):base(userService)
+        public ProfileController(IUserService userService) : base(userService)
         {
             _userService = userService;
         }

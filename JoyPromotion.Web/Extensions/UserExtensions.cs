@@ -1,5 +1,4 @@
-﻿using JoyPromotion.Business.Abstract;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Security.Claims;
 

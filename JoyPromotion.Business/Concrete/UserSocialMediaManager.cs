@@ -2,7 +2,6 @@
 using JoyPromotion.Business.Abstract;
 using JoyPromotion.DataAccess.Abstract;
 using JoyPromotion.Dtos.Dtos;
-using System;
 using System.Collections.Generic;
 
 namespace JoyPromotion.Business.Concrete

@@ -20,7 +20,7 @@ namespace JoyPromotion.Web.TagHelpers
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendFormat($"<button type'{type}' class='btn {style}'>{value}</button>");
             output.Content.SetHtmlContent(stringBuilder.ToString());
-            base.Process(context, output);  
+            base.Process(context, output);
         }
     }
 }

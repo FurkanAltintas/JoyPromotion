@@ -1,12 +1,7 @@
 ﻿using JoyPromotion.DataAccess.Abstract;
 using JoyPromotion.Entities.Concrete;
 using JoyPromotion.Shared.DataAccess.Dapper;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JoyPromotion.DataAccess.Concrete.Dapper
 {

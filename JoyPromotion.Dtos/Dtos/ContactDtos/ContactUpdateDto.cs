@@ -1,5 +1,4 @@
 ﻿using JoyPromotion.Shared.Entities;
-using System;
 
 namespace JoyPromotion.Dtos.Dtos
 {
