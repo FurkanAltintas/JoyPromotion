@@ -26,7 +26,7 @@
 
         <div class="form-group captcha mb-3">
             <img src="~/get-captcha-image" id="img-captcha" />
-            <span class="fa fa-refresh" aria-hidden="true"></span>
+            <i id="refresh" class="fa fa-refresh" aria-hidden="true"></i>
             <input asp-for="ContactAddDto.CaptchaCode" class="form-control" placeholder="Captcha Code" />
             <span asp-validation-for="ContactAddDto.CaptchaCode" class="text-danger"></span>
         </div>
@@ -41,7 +41,7 @@
 
 @section scripts {
 <script>
-        $("#img-captcha").click(function () {
+        $("#refresh").click(function () {
         resetCaptchaImage();
     });
 

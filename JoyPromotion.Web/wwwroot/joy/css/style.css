@@ -327,6 +327,14 @@ a:hover {
     margin-bottom: 1rem !important;
 }
 
+#refresh {
+    float: left;
+    font-size: 20px;
+    margin-left: 8px;
+    margin-top: 8px;
+    color: rgb(160, 160, 160);
+}
+
 @media (max-width: 780px) {
     .top-content, .top-content-details {
         padding: 0;

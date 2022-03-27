@@ -1,4 +1,5 @@
 ﻿using JoyPromotion.Shared.Entities;
+using System;
 
 namespace JoyPromotion.Dtos.Dtos
 {
@@ -9,5 +10,6 @@ namespace JoyPromotion.Dtos.Dtos
         public string Subject { get; set; }
         public string Message { get; set; }
         public string CaptchaCode { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

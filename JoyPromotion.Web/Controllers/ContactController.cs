@@ -42,7 +42,7 @@ namespace JoyPromotion.Web.Controllers
                 if (Captcha.ValidateCaptchaCode(contactAddViewModel.ContactAddDto.CaptchaCode, HttpContext))
                 {
                     _contactService.Add(contactAddViewModel.ContactAddDto);
-                    return View();
+                    return RedirectToAction("Index","Home");
                 }
 
                 ModelState.AddModelError(string.Empty, "The captcha information you entered is incorrect.");

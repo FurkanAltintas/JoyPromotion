@@ -1,9 +1,11 @@
 ﻿using JoyPromotion.Business.Abstract;
+using JoyPromotion.Shared.Utils.EmailSender;
 using JoyPromotion.Web.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -55,6 +57,32 @@ namespace JoyPromotion.Web.Controllers
                 ModelState.AddModelError("", "Kullanıcı adı veya parola hatalı");
             }
             return View(userLoginViewModel);
+        }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        public IActionResult PasswordReset()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult PasswordReset(string email)
+        {
+            var callBackUrl = Url.Action("ResetPassword", "Auth", new { userId = 1, code = Guid.NewGuid().ToString() });
+
+            #region Email Sender
+            Mail mail = new();
+            var request = HttpContext.Request;
+            var baseUrl = $"{request.Scheme}://{request.Host}" + callBackUrl;
+            string body = new Template().PasswordReset(baseUrl);
+            mail.MailSend(email, body, Mail.PasswordReset);
+            #endregion
+
+            return View();
         }
 
         public async Task<IActionResult> Logout()

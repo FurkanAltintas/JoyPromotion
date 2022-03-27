@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using JoyPromotion.Dtos.Dtos;
 using JoyPromotion.Entities.Concrete;
+using System;
 
 namespace JoyPromotion.Business.Mapping
 {
@@ -10,7 +11,7 @@ namespace JoyPromotion.Business.Mapping
         {
             CreateMap<Contact, ContactListDto>().ReverseMap();
             CreateMap<Contact, ContactDto>().ReverseMap();
-            CreateMap<Contact, ContactAddDto>().ReverseMap();
+            CreateMap<Contact, ContactAddDto>().ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(x => DateTime.Now)).ReverseMap();
             CreateMap<Contact, ContactUpdateDto>().ReverseMap();
             CreateMap<ContactUpdateDto, CategoryDto>().ReverseMap();
         }
