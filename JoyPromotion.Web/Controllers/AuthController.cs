@@ -74,13 +74,7 @@ namespace JoyPromotion.Web.Controllers
         {
             var callBackUrl = Url.Action("ResetPassword", "Auth", new { userId = 1, code = Guid.NewGuid().ToString() });
 
-            #region Email Sender
-            Mail mail = new();
-            var request = HttpContext.Request;
-            var baseUrl = $"{request.Scheme}://{request.Host}" + callBackUrl;
-            string body = new Template().PasswordReset(baseUrl);
-            mail.MailSend(email, body, Mail.PasswordReset);
-            #endregion
+            EmailSender(email, callBackUrl);
 
             return View();
         }
@@ -90,6 +84,18 @@ namespace JoyPromotion.Web.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             // HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme).Wait(); ile de yapabiliriz
             return RedirectToAction("Index", "Home", new { area = "" });
+        }
+
+
+        public void EmailSender(string email, string callBackUrl)
+        {
+            #region Email Sender
+            Mail mail = new();
+            var request = HttpContext.Request;
+            var baseUrl = $"{request.Scheme}://{request.Host}" + callBackUrl;
+            string body = new Template().PasswordReset(baseUrl);
+            mail.MailSend(email, body, Mail.PasswordReset);
+            #endregion
         }
     }
 }
