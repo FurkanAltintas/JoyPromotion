@@ -1,5 +1,6 @@
 ﻿using JoyPromotion.Business.Abstract;
 using JoyPromotion.Web.Areas.Admin.Models;
+using JoyPromotion.Web.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -45,6 +46,7 @@ namespace JoyPromotion.Web.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 _userService.Add(userAddViewModel.UserAddDto);
+                this.SenderRequest(userAddViewModel.UserAddDto.Email, EmailSenderRequest.EmailConfirmed);
             }
 
             return View(userAddViewModel);

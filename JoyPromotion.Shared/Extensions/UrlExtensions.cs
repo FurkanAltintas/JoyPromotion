@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace JoyPromotion.Shared.Utils
+namespace JoyPromotion.Shared.Extensions
 {
     public static class UrlExtensions
     {

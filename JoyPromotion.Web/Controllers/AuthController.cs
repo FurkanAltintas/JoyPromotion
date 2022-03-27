@@ -1,6 +1,8 @@
 ﻿using JoyPromotion.Business.Abstract;
 using JoyPromotion.Shared.Utils.EmailSender;
+using JoyPromotion.Web.Extensions;
 using JoyPromotion.Web.Models;
+using JoyPromotion.Web.Utils;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
@@ -59,11 +61,6 @@ namespace JoyPromotion.Web.Controllers
             return View(userLoginViewModel);
         }
 
-        public IActionResult Register()
-        {
-            return View();
-        }
-
         public IActionResult PasswordReset()
         {
             return View();
@@ -72,9 +69,12 @@ namespace JoyPromotion.Web.Controllers
         [HttpPost]
         public IActionResult PasswordReset(string email)
         {
-            var callBackUrl = Url.Action("ResetPassword", "Auth", new { userId = 1, code = Guid.NewGuid().ToString() });
+            #region Eski Yöntem Mail Atma
+            // var callBackUrl = Url.Action("ResetPassword", "Auth", new { userId = 1, code = Guid.NewGuid().ToString() });
+            //EmailSender(email, this.CallBackUrl());
+            #endregion
 
-            EmailSender(email, callBackUrl);
+            this.SenderRequest(email, EmailSenderRequest.PasswordReset);
 
             return View();
         }
@@ -86,16 +86,17 @@ namespace JoyPromotion.Web.Controllers
             return RedirectToAction("Index", "Home", new { area = "" });
         }
 
-
-        public void EmailSender(string email, string callBackUrl)
-        {
-            #region Email Sender
-            Mail mail = new();
-            var request = HttpContext.Request;
-            var baseUrl = $"{request.Scheme}://{request.Host}" + callBackUrl;
-            string body = new Template().PasswordReset(baseUrl);
-            mail.MailSend(email, body, Mail.PasswordReset);
-            #endregion
-        }
+        #region Eski Yöntem Mail Atma
+        //public void EmailSender(string email, string callBackUrl)
+        //{
+        //    #region Email Sender
+        //    Mail mail = new();
+        //    var request = HttpContext.Request;
+        //    var baseUrl = $"{request.Scheme}://{request.Host}" + callBackUrl;
+        //    string body = new Template().PasswordReset(baseUrl);
+        //    mail.MailSend(email, body, Mail.PasswordReset);
+        //    #endregion
+        //}
+        #endregion
     }
 }
