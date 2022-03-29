@@ -335,6 +335,16 @@ a:hover {
     color: rgb(160, 160, 160);
 }
 
+.form-control .search {
+    background-color: #413f3f;
+    color: white;
+}
+
+.form-control .search:focus {
+    background-color: #2b2b2b;
+    color: white;
+}
+
 @media (max-width: 780px) {
     .top-content, .top-content-details {
         padding: 0;

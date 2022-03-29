@@ -1,40 +1,44 @@
 ﻿@model ContentListViewModelUI
 
-    <article class="top-one">
-            <div class="container">
-                <div class="top-img">
-                    <a asp-controller="Home" asp-action="Details" asp-route-title="@Model.ContentDto.SlugTitle" asp-route-id="@Model.ContentDto.Id">
-                        <img src="~/joy/img/background.jpg" class="img-fluid" alt="">
-                    </a>
-                </div>
-                <div class="top-content">
-                    <div class="top-content-category">
-                        @Model.ContentDto.CategoryName.ToUpper()
-                    </div>
-                    <div class="top-content-title">
-                        <a asp-controller="Home" asp-action="Details" asp-route-title="@Model.ContentDto.SlugTitle" asp-route-id="@Model.ContentDto.Id">
-                            @Model.ContentDto.Title
-                        </a>
-                    </div>
-                    <div class="top-content-description">
-                        @Html.Raw(ContentExtensions.DescriptionSubstring(Model.ContentDto.Description, 300))
-                    </div>
-                </div>
-            </div>
-        </article>
+@{
+    ViewData["Title"] = "Index";
+}
 
-        <hr>
-
-        <article class="blog-tops">
-            <div class="container">
-                <div id="content-main" class="row">            
-                    @await Html.PartialAsync("_Content", Model)
-                </div>
-                <div class="col-md-12">
-                        <button id="loadMore" class="btn btn-outline-dark">Load more</button>
-                </div>
+<article class="top-one">
+    <div class="container">
+        <div class="top-img">
+            <a asp-controller="Home" asp-action="Details" asp-route-title="@Model.ContentDto.SlugTitle" asp-route-id="@Model.ContentDto.Id">
+                <img src="~/joy/img/background.jpg" class="img-fluid" alt="">
+            </a>
+        </div>
+        <div class="top-content">
+            <div class="top-content-category">
+                @Model.ContentDto.CategoryName.ToUpper()
             </div>
-        </article>
+            <div class="top-content-title">
+                <a asp-controller="Home" asp-action="Details" asp-route-title="@Model.ContentDto.SlugTitle" asp-route-id="@Model.ContentDto.Id">
+                    @Model.ContentDto.Title
+                </a>
+            </div>
+            <div class="top-content-description">
+                @Html.Raw(ContentExtensions.DescriptionSubstring(Model.ContentDto.Description, 300))
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+<article class="blog-tops">
+    <div class="container">
+        <div id="content-main" class="row">
+            @await Html.PartialAsync("_Content", Model)
+        </div>
+        <div class="col-md-12">
+            <button id="loadMore" class="btn btn-outline-dark">Load more</button>
+        </div>
+    </div>
+</article>
 
 @section scripts {
 <script src="~/joy/js/jquery.min.js"></script>
