@@ -1,16 +1,18 @@
 ﻿using JoyPromotion.Dtos.Dtos;
 using JoyPromotion.Entities.Concrete;
+using JoyPromotion.Shared.Utils.Results.Abstract;
 using System.Collections.Generic;
 
 namespace JoyPromotion.Business.Abstract
 {
     public interface ICategoryService
     {
-        List<CategoryListDto> GetAll();
-        CategoryDto GetById(int id);
-        CategoryAddDto Add(CategoryAddDto categoryAddDto);
-        CategoryUpdateDto Update(CategoryUpdateDto categoryUpdateDto);
-        void Delete(Category category);
+        IDataResult<CategoryListDto> GetAll();
+        IDataResult<CategoryDto> GetById(int id);
+        IDataResult<CategoryDto> Add(CategoryAddDto categoryAddDto);
+        IDataResult<CategoryDto> Update(CategoryUpdateDto categoryUpdateDto);
+        IDataResult<CategoryDto> Delete(int categoryId);
+        IResult HardDelete(int categoryId); 
         TDto Convert<TDto>(CategoryDto categoryDto);
     }
 }
